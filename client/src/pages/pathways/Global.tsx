@@ -5,7 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, Lock, Play, CheckCircle2, Zap } from "lucide-react";
 import { Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
+// Auth removed for public access
 
 export default function SiddhiPathway() {
   const { isAuthenticated } = useAuth();
@@ -155,9 +155,9 @@ export default function SiddhiPathway() {
               <p className="text-muted-foreground mb-6">
                 Sign up to access advanced techniques and develop superhuman capabilities
               </p>
-              <a href={getLoginUrl()}>
+              <Link href="/learn">
                 <Button size="lg">Get Started</Button>
-              </a>
+              </Link>
             </CardContent>
           </Card>
         )}

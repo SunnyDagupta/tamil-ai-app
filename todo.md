@@ -231,7 +231,8 @@
 - [x] Disable forced authentication redirect
 - [x] Allow guest/anonymous access to app
 - [x] Remove login buttons and auth UI
-- [ ] Test app loads without login prompt
+- [x] Remove getLoginUrl from all pathway pages
+- [x] Test app loads without login prompt (dev server works)
 
 
 ## UI/UX Review & Best Practices (NEW)

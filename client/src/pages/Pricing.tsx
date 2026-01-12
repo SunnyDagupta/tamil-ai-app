@@ -3,11 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Check, ArrowLeft, IndianRupee } from "lucide-react";
 import { Link } from "wouter";
-import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
+// Auth removed for public access
 
 export default function Pricing() {
-  const { isAuthenticated } = useAuth();
 
   const tiers = [
     {
@@ -113,23 +111,14 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                {isAuthenticated ? (
+                <Link href="/learn">
                   <Button
                     className="w-full"
                     variant={tier.highlighted ? "default" : "outline"}
                   >
                     {tier.cta}
                   </Button>
-                ) : (
-                  <a href={getLoginUrl()}>
-                    <Button
-                      className="w-full"
-                      variant={tier.highlighted ? "default" : "outline"}
-                    >
-                      {tier.cta}
-                    </Button>
-                  </a>
-                )}
+                </Link>
               </CardContent>
             </Card>
           ))}

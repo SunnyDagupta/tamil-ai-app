@@ -7,7 +7,7 @@ import { Link } from "wouter";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
+// Auth removed for public access
 
 export default function ThirukkuralPathway() {
   const { isAuthenticated } = useAuth();
@@ -254,9 +254,9 @@ export default function ThirukkuralPathway() {
               <p className="text-muted-foreground mb-6">
                 Sign up to bookmark couplets, track your progress, and access detailed explanations
               </p>
-              <a href={getLoginUrl()}>
+              <Link href="/learn">
                 <Button size="lg">Get Started</Button>
-              </a>
+              </Link>
             </CardContent>
           </Card>
         )}

@@ -13,11 +13,9 @@ import {
   XCircle,
 } from "lucide-react";
 import { Link } from "wouter";
-import { getLoginUrl } from "@/const";
-import { useAuth } from "@/_core/hooks/useAuth";
+// Auth removed for public access
 
 export default function Home() {
-  const { isAuthenticated } = useAuth();
 
   const learningPathways = [
     {
@@ -136,26 +134,16 @@ export default function Home() {
             <p className="text-sm text-muted-foreground mt-2 text-right">- Dr. Pillai</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {isAuthenticated ? (
-              <Link href="/dashboard">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Go to Dashboard <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            ) : (
-              <>
-                <a href={getLoginUrl()}>
-                  <Button size="lg" className="text-lg px-8 py-6">
-                    Join Now <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </a>
-                <Link href="/about">
-                  <Button size="lg" variant="outline" className="text-lg px-8 py-6">
-                    Learn More
-                  </Button>
-                </Link>
-              </>
-            )}
+            <Link href="/app">
+              <Button size="lg" className="text-lg px-8 py-6">
+                Start Learning <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+            <Link href="/learn">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+                Explore Modules
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -327,19 +315,11 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            {isAuthenticated ? (
-              <Link href="/pathways">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Explore All Pathways <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            ) : (
-              <a href={getLoginUrl()}>
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Start Your Journey <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </a>
-            )}
+            <Link href="/learn">
+              <Button size="lg" className="text-lg px-8 py-6">
+                Explore All Pathways <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -354,26 +334,16 @@ export default function Home() {
             Secure your future. Master Super Intelligence. Elevate Tamil language globally.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {isAuthenticated ? (
-              <Link href="/dashboard">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Go to Dashboard <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            ) : (
-              <>
-                <a href={getLoginUrl()}>
-                  <Button size="lg" className="text-lg px-8 py-6">
-                    Join Free Access <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </a>
-                <Link href="/faq">
-                  <Button size="lg" variant="outline" className="text-lg px-8 py-6">
-                    View FAQ
-                  </Button>
-                </Link>
-              </>
-            )}
+            <Link href="/app">
+              <Button size="lg" className="text-lg px-8 py-6">
+                Start Learning <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+            <Link href="/faq">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+                View FAQ
+              </Button>
+            </Link>
           </div>
           <p className="text-sm text-muted-foreground mt-6">
             Free video introduction + exclusive access to the Tamil AI community

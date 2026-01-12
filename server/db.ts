@@ -108,7 +108,8 @@ export async function searchThirukkural(query: string, limit = 20) {
         like(thirukkural.originalTamil, searchPattern),
         like(thirukkural.englishTranslation, searchPattern),
         like(thirukkural.transliteration, searchPattern),
-        like(thirukkural.keywords, searchPattern)
+        like(thirukkural.explanation, searchPattern),
+        like(thirukkural.chapterName, searchPattern)
       )
     )
     .limit(limit);

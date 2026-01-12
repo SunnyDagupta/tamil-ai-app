@@ -1,0 +1,42 @@
+{
+  "name": "Tamil AI - Super Intelligence Platform",
+  "short_name": "Tamil AI",
+  "description": "Unlock Super Intelligence Using Ancient Tamil Syllables & Thirukkural Secrets",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ea580c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Search Thirukkural",
+      "short_name": "Search",
+      "description": "Search Tamil wisdom",
+      "url": "/pathways/thirukkural",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Meditations",
+      "short_name": "Meditate",
+      "description": "Access guided meditations",
+      "url": "/pathways/sis",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

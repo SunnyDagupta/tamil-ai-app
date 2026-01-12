@@ -1,6 +1,11 @@
-import { eq } from "drizzle-orm";
+import { eq, desc, and, like, or, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { 
+  InsertUser, users, thirukkural, meditations, meditationSessions, 
+  bookmarks, learningPathways, userPathwayProgress, userStreaks,
+  achievements, userAchievements, communityPosts, userSubscriptions,
+  meditationCategories, subscriptionTiers
+} from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +94,353 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Thirukkural functions
+export async function searchThirukkural(query: string, limit = 20) {
+  const db = await getDb();
+  if (!db) return [];
+
+  const searchPattern = `%${query}%`;
+  return await db
+    .select()
+    .from(thirukkural)
+    .where(
+      or(
+        like(thirukkural.originalTamil, searchPattern),
+        like(thirukkural.englishTranslation, searchPattern),
+        like(thirukkural.transliteration, searchPattern),
+        like(thirukkural.keywords, searchPattern)
+      )
+    )
+    .limit(limit);
+}
+
+export async function getThirukkuralById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(thirukkural).where(eq(thirukkural.id, id)).limit(1);
+  return result[0] || null;
+}
+
+export async function getThirukkuralByChapter(chapterNumber: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db
+    .select()
+    .from(thirukkural)
+    .where(eq(thirukkural.chapterNumber, chapterNumber))
+    .orderBy(thirukkural.coupletNumber);
+}
+
+// Bookmark functions
+export async function getUserBookmarks(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db
+    .select({
+      bookmark: bookmarks,
+      couplet: thirukkural,
+    })
+    .from(bookmarks)
+    .innerJoin(thirukkural, eq(bookmarks.coupletId, thirukkural.id))
+    .where(eq(bookmarks.userId, userId))
+    .orderBy(desc(bookmarks.createdAt));
+}
+
+export async function addBookmark(userId: number, coupletId: number, notes?: string) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(bookmarks).values({
+    userId,
+    coupletId,
+    notes: notes || null,
+  });
+
+  return result;
+}
+
+export async function removeBookmark(userId: number, coupletId: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  return await db
+    .delete(bookmarks)
+    .where(and(eq(bookmarks.userId, userId), eq(bookmarks.coupletId, coupletId)));
+}
+
+// Meditation functions
+export async function getMeditations(categoryId?: number, requiredTier?: string) {
+  const db = await getDb();
+  if (!db) return [];
+
+  if (categoryId) {
+    return await db
+      .select()
+      .from(meditations)
+      .where(and(eq(meditations.isActive, 1), eq(meditations.categoryId, categoryId)))
+      .orderBy(desc(meditations.createdAt));
+  }
+
+  return await db
+    .select()
+    .from(meditations)
+    .where(eq(meditations.isActive, 1))
+    .orderBy(desc(meditations.createdAt));
+}
+
+export async function getMeditationById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(meditations).where(eq(meditations.id, id)).limit(1);
+  return result[0] || null;
+}
+
+export async function getMeditationCategories() {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db.select().from(meditationCategories);
+}
+
+// Meditation session functions
+export async function createMeditationSession(
+  userId: number,
+  meditationId: number,
+  durationListenedSeconds: number,
+  completed: boolean,
+  rating?: number,
+  notes?: string
+) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(meditationSessions).values({
+    userId,
+    meditationId,
+    durationListenedSeconds,
+    completed: completed ? 1 : 0,
+    rating: rating || null,
+    notes: notes || null,
+    startedAt: new Date(),
+    completedAt: completed ? new Date() : null,
+  });
+
+  // Update streak
+  await updateUserStreak(userId);
+
+  // Return the created session ID
+  const insertId = (result as any).insertId;
+  if (!insertId) {
+    return null;
+  }
+  
+  const sessionId = Number(insertId);
+  if (isNaN(sessionId)) {
+    return null;
+  }
+  
+  const sessions = await db
+    .select()
+    .from(meditationSessions)
+    .where(eq(meditationSessions.id, sessionId))
+    .limit(1);
+
+  return sessions[0] || null;
+}
+
+export async function getUserMeditationSessions(userId: number, limit = 50) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db
+    .select({
+      session: meditationSessions,
+      meditation: meditations,
+    })
+    .from(meditationSessions)
+    .innerJoin(meditations, eq(meditationSessions.meditationId, meditations.id))
+    .where(eq(meditationSessions.userId, userId))
+    .orderBy(desc(meditationSessions.startedAt))
+    .limit(limit);
+}
+
+export async function getUserMeditationStats(userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const sessions = await db
+    .select()
+    .from(meditationSessions)
+    .where(eq(meditationSessions.userId, userId));
+
+  const totalSessions = sessions.length;
+  const completedSessions = sessions.filter((s) => s.completed).length;
+  const totalMinutes = Math.floor(
+    sessions.reduce((sum, s) => sum + s.durationListenedSeconds, 0) / 60
+  );
+
+  return {
+    totalSessions,
+    completedSessions,
+    totalMinutes,
+  };
+}
+
+// User streak functions
+export async function getUserStreak(userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(userStreaks).where(eq(userStreaks.userId, userId)).limit(1);
+  return result[0] || null;
+}
+
+export async function updateUserStreak(userId: number) {
+  const db = await getDb();
+  if (!db) return;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const streak = await getUserStreak(userId);
+
+  if (!streak) {
+    // Create new streak
+    await db.insert(userStreaks).values({
+      userId,
+      currentStreak: 1,
+      longestStreak: 1,
+      lastActivityDate: new Date(),
+      totalMeditationMinutes: 0,
+      totalSessions: 1,
+    });
+    return;
+  }
+
+  const lastActivity = new Date(streak.lastActivityDate!);
+  lastActivity.setHours(0, 0, 0, 0);
+
+  const daysDiff = Math.floor((today.getTime() - lastActivity.getTime()) / (1000 * 60 * 60 * 24));
+
+  if (daysDiff === 0) {
+    // Same day, just update session count
+    await db
+      .update(userStreaks)
+      .set({
+        totalSessions: streak.totalSessions + 1,
+        lastActivityDate: new Date(),
+      })
+      .where(eq(userStreaks.userId, userId));
+  } else if (daysDiff === 1) {
+    // Next day, increment streak
+    const newStreak = streak.currentStreak + 1;
+    await db
+      .update(userStreaks)
+      .set({
+        currentStreak: newStreak,
+        longestStreak: Math.max(newStreak, streak.longestStreak),
+        lastActivityDate: new Date(),
+        totalSessions: streak.totalSessions + 1,
+      })
+      .where(eq(userStreaks.userId, userId));
+  } else {
+    // Streak broken, reset
+    await db
+      .update(userStreaks)
+      .set({
+        currentStreak: 1,
+        lastActivityDate: new Date(),
+        totalSessions: streak.totalSessions + 1,
+      })
+      .where(eq(userStreaks.userId, userId));
+  }
+}
+
+// Learning pathway functions
+export async function getLearningPathways(requiredTier?: string) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db
+    .select()
+    .from(learningPathways)
+    .where(eq(learningPathways.isActive, 1))
+    .orderBy(learningPathways.level);
+}
+
+export async function getUserPathwayProgress(userId: number, pathwayId: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db
+    .select()
+    .from(userPathwayProgress)
+    .where(
+      and(eq(userPathwayProgress.userId, userId), eq(userPathwayProgress.pathwayId, pathwayId))
+    )
+    .limit(1);
+
+  return result[0] || null;
+}
+
+// Achievement functions
+export async function getUserAchievements(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db
+    .select({
+      userAchievement: userAchievements,
+      achievement: achievements,
+    })
+    .from(userAchievements)
+    .innerJoin(achievements, eq(userAchievements.achievementId, achievements.id))
+    .where(eq(userAchievements.userId, userId))
+    .orderBy(desc(userAchievements.unlockedAt));
+}
+
+// Community functions
+export async function getCommunityPosts(limit = 50) {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db
+    .select({
+      post: communityPosts,
+      user: users,
+    })
+    .from(communityPosts)
+    .innerJoin(users, eq(communityPosts.userId, users.id))
+    .where(eq(communityPosts.isActive, 1))
+    .orderBy(desc(communityPosts.createdAt))
+    .limit(limit);
+}
+
+// Subscription functions
+export async function getUserSubscription(userId: number) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db
+    .select({
+      subscription: userSubscriptions,
+      tier: subscriptionTiers,
+    })
+    .from(userSubscriptions)
+    .innerJoin(subscriptionTiers, eq(userSubscriptions.tierId, subscriptionTiers.id))
+    .where(and(eq(userSubscriptions.userId, userId), eq(userSubscriptions.status, "active")))
+    .limit(1);
+
+  return result[0] || null;
+}
+
+export async function getSubscriptionTiers() {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db.select().from(subscriptionTiers);
+}

@@ -219,3 +219,9 @@
 - [x] Add MarkCompleteButton to Module 6 (Global Tamil Influence) - 5 lessons
 - [ ] Test completion tracking across all modules
 - [ ] Verify progress updates in Profile dashboard
+
+
+## Unlock All Modules (NEW)
+- [x] Remove gating logic from Learn page
+- [x] Ensure all 6 modules are accessible to all users
+- [ ] Test module access

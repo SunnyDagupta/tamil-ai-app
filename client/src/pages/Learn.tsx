@@ -15,7 +15,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function Learn() {
   const { user } = useAuth();
-  const userTier = user?.role === "admin" ? "advanced" : "beginner"; // TODO: Get from subscription
+  const userTier = "advanced"; // All modules unlocked for everyone
 
   const pathways = [
     {
@@ -45,7 +45,7 @@ export default function Learn() {
       icon: Sparkles,
       color: "bg-pink-500",
       path: "/pathways/siddhi",
-      tier: "pro",
+      tier: "beginner",
       lessons: 15,
     },
     {
@@ -55,7 +55,7 @@ export default function Learn() {
       icon: Brain,
       color: "bg-blue-500",
       path: "/pathways/tcgnpt",
-      tier: "pro",
+      tier: "beginner",
       lessons: 10,
     },
     {
@@ -65,7 +65,7 @@ export default function Learn() {
       icon: Zap,
       color: "bg-yellow-500",
       path: "/pathways/fusion",
-      tier: "advanced",
+      tier: "beginner",
       lessons: 20,
     },
     {
@@ -75,7 +75,7 @@ export default function Learn() {
       icon: Globe,
       color: "bg-green-500",
       path: "/pathways/global",
-      tier: "advanced",
+      tier: "beginner",
       lessons: 8,
     },
   ];

@@ -186,6 +186,32 @@ Provide personalized guidance on how to apply this wisdom.`;
       }),
   }),
 
+  // Lessons
+  lessons: router({
+    markComplete: protectedProcedure
+      .input(z.object({ 
+        moduleName: z.string(),
+        lessonId: z.string()
+      }))
+      .mutation(async ({ ctx, input }) => {
+        return await db.markLessonComplete(ctx.user.id, input.moduleName, input.lessonId);
+      }),
+    
+    getCompletedLessons: protectedProcedure
+      .query(async ({ ctx }) => {
+        return await db.getUserCompletedLessons(ctx.user.id);
+      }),
+    
+    isLessonComplete: protectedProcedure
+      .input(z.object({ 
+        moduleName: z.string(),
+        lessonId: z.string()
+      }))
+      .query(async ({ ctx, input }) => {
+        return await db.isLessonComplete(ctx.user.id, input.moduleName, input.lessonId);
+      }),
+  }),
+
   // Community
   community: router({
     posts: publicProcedure

@@ -17,6 +17,7 @@ import {
   BookOpen,
   Brain,
 } from "lucide-react";
+import { DailyPracticeReminder } from "@/components/DailyPracticeReminder";
 
 export default function Profile() {
   const { user, isAuthenticated } = useAuth();
@@ -262,6 +263,11 @@ export default function Profile() {
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Daily Practice Reminder */}
+      <div className="px-6 py-6">
+        <DailyPracticeReminder />
       </div>
 
       {/* Achievements */}

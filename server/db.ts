@@ -445,3 +445,60 @@ export async function getSubscriptionTiers() {
 
   return await db.select().from(subscriptionTiers);
 }
+
+// Lesson completion tracking functions
+export async function markLessonComplete(userId: number, moduleName: string, lessonId: string) {
+  const db = await getDb();
+  if (!db) return { success: false };
+
+  try {
+    await db.execute(sql`
+      INSERT INTO lesson_completions (user_id, module_name, lesson_id, completed_at)
+      VALUES (${userId}, ${moduleName}, ${lessonId}, NOW())
+      ON DUPLICATE KEY UPDATE completed_at = NOW()
+    `);
+    
+    return { success: true };
+  } catch (error) {
+    console.error("[Database] Error marking lesson complete:", error);
+    return { success: false, error };
+  }
+}
+
+export async function getUserCompletedLessons(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  try {
+    const result = await db.execute(sql`
+      SELECT module_name, lesson_id, completed_at
+      FROM lesson_completions
+      WHERE user_id = ${userId}
+      ORDER BY completed_at DESC
+    `);
+    
+    return (result[0] as any) as Array<{ module_name: string; lesson_id: string; completed_at: Date }>;
+  } catch (error) {
+    console.error("[Database] Error getting completed lessons:", error);
+    return [];
+  }
+}
+
+export async function isLessonComplete(userId: number, moduleName: string, lessonId: string) {
+  const db = await getDb();
+  if (!db) return { completed: false };
+
+  try {
+    const result = await db.execute(sql`
+      SELECT COUNT(*) as count
+      FROM lesson_completions
+      WHERE user_id = ${userId} AND module_name = ${moduleName} AND lesson_id = ${lessonId}
+    `);
+    
+    const rows = (result[0] as any) as Array<{ count: number }>;
+    return { completed: rows[0]?.count > 0 };
+  } catch (error) {
+    console.error("[Database] Error checking lesson completion:", error);
+    return { completed: false };
+  }
+}

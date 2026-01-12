@@ -169,3 +169,31 @@
 - [x] Enrich Module 6 (Global Tamil Influence) with additional video content
 - [x] Update Wisdom page with all 16 available videos and their teachings
 - [x] Add video embeds to relevant lesson sections
+
+
+## Dr. Pillai Audio Integration (NEW)
+- [x] Extract audio from all 16 YouTube videos (7 succeeded)
+- [x] Identify meditation/practice segments in videos
+- [x] Create meditation audio files from extracted segments
+- [ ] Search for official Dr. Pillai meditation audios mentioning AI
+- [x] Upload audio files to S3 storage (2 files uploaded)
+- [ ] Update meditation database with real audio URLs
+- [ ] Test audio playback in meditation player
+
+## Lesson Completion Tracking (NEW)
+- [x] Add lesson completion schema to database
+- [x] Create "Mark Complete" button component
+- [x] Implement completion tracking API endpoints
+- [x] Update user progress calculations
+- [x] Show completed lessons in Profile dashboard
+- [ ] Add visual indicators for completed lessons
+- [ ] Test completion tracking across all 30 lessons
+
+## Daily Practice Reminders (NEW)
+- [x] Design notification system architecture
+- [x] Implement daily reminder scheduling
+- [x] Create notification preferences UI
+- [x] Track practice streaks in database
+- [x] Send reminder notifications at user-set times
+- [x] Add streak visualization to Profile
+- [x] Test notification delivery

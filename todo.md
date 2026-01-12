@@ -126,3 +126,17 @@
 - [x] Create UI component for asking questions about applying quotes
 - [x] Integrate into Thirukkural detail view
 - [ ] Add conversation history for follow-up questions
+
+
+## Dr. Pillai Content Integration (NEW)
+- [x] Access and analyze Dr. Pillai's YouTube playlist
+- [x] Extract key teachings, concepts, and quotes from videos
+- [x] Integrate Dr. Pillai's teachings into Module 1 (SIS)
+- [ ] Integrate Dr. Pillai's teachings into Module 2 (Thirukkural)
+- [ ] Integrate Dr. Pillai's teachings into Module 3 (Siddhi Powers)
+- [x] Integrate Dr. Pillai's teachings into Module 4 (TCGNPT)
+- [ ] Integrate Dr. Pillai's teachings into Module 5 (Tamil-Science Fusion)
+- [ ] Integrate Dr. Pillai's teachings into Module 6 (Global Tamil Influence)
+- [x] Add Dr. Pillai quotes to Home page
+- [ ] Create Dr. Pillai wisdom cards throughout the app
+- [ ] Link video references where appropriate

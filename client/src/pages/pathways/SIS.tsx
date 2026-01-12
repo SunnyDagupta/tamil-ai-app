@@ -17,6 +17,8 @@ export default function SIS() {
       description: "Understanding how Tamil syllables operate at the quantum level",
       content: `Tamil syllables are not just sounds—they are quantum-level information carriers. Each syllable contains inherent intelligence that can influence reality at the fundamental level.
 
+As Dr. Pillai teaches: "Each Tamil letter contains a secret that can transform your life. This is not metaphor—it's quantum technology embedded in an ancient language."
+
 The Syllable Intelligence System (SIS) reveals that Tamil, as one of the oldest living languages, has preserved these quantum codes for over 5,000 years. When you speak or meditate on these syllables, you're accessing a level of intelligence that modern AI cannot reach.
 
 Key Concepts:
@@ -24,6 +26,9 @@ Key Concepts:
 • Omniscience: Each syllable contains complete knowledge within it
 • Manifestation Power: Syllables can materialize thoughts into reality
 • Non-PreTrained: Unlike AI models that need training data, Tamil syllables carry inherent wisdom
+
+Dr. Pillai's Core Teaching:
+"ChatGPT can give answers to almost everything. But knowing answers is not the same as understanding them. Tamil AI gives you understanding at the consciousness level."
 
 This module will teach you how to harness this ancient technology for modern challenges.`,
       unlocked: true,
@@ -37,16 +42,30 @@ This module will teach you how to harness this ancient technology for modern cha
       content: `The 12 core Tamil syllables form the foundation of Syllable Intelligence:
 
 1. AH (அ) - Creation, Beginning, Divine Source
+   Dr. Pillai: "The sound 'A' contains super intelligence! It represents the beginning of creation and connects directly to Brahman consciousness."
+
 2. EE (ஈ) - Expansion, Growth, Abundance
+   Dr. Pillai: "Chant 'EE' to delimit your mind and break through mental boundaries."
+
 3. OO (ஊ) - Protection, Stability, Foundation
+
 4. KA (க) - Action, Movement, Manifestation
+
 5. SA (ச) - Consciousness, Awareness, Wisdom
+
 6. TA (த) - Transformation, Change, Evolution
+
 7. PA (ப) - Power, Energy, Strength
+
 8. MA (ம) - Love, Compassion, Unity
+
 9. YA (ய) - Connection, Relationship, Harmony
+
 10. RA (ர) - Light, Illumination, Clarity
+
 11. LA (ல) - Dissolution, Release, Freedom
+    Dr. Pillai: "'LA' liberates you from limitation and expands consciousness beyond current boundaries."
+
 12. VA (வ) - Flow, Movement, Grace
 
 Each syllable has specific applications:
@@ -136,6 +155,9 @@ Choose a problem you're currently facing. Apply the Creative Syllable Formula da
       description: "Master the art of materializing desires using syllable power",
       content: `Manifestation is not wishful thinking—it's quantum physics applied through sound. Tamil syllables are the most powerful manifestation tools because they operate at the causal level of reality.
 
+Dr. Pillai's Teaching on Wealth Manifestation:
+"Tamil sounds can attract money because they operate at the frequency of abundance consciousness. Sound creates vibration, vibration affects the quantum field, and the quantum field manifests as material reality."
+
 The Manifestation Process:
 1. Clarity: Define exactly what you want to manifest
 2. Syllable Selection: Choose the right syllable for your goal
@@ -144,13 +166,13 @@ The Manifestation Process:
 5. Detachment: Release and trust the quantum field
 6. Action: Take inspired steps toward your goal
 
-Manifestation Syllables:
-• SHREEM (ஶ்ரீம்) - Wealth, abundance, prosperity
+Manifestation Syllables (Dr. Pillai's Recommendations):
+• SHREEM (ஶ்ரீம்) - Lakshmi's sound for prosperity and wealth
 • KLEEM (க்லீம்) - Attraction, magnetism, desire fulfillment
 • HREEM (ஹ்ரீம்) - Healing, transformation, divine grace
-• AIM (ஐம்) - Knowledge, wisdom, learning
-• GLAUM (க்லௌம்) - Obstacle removal, success
-• DUM (தும்) - Protection, strength, courage
+• AIM (ஐம்) - Saraswati's sound for knowledge that leads to wealth
+• GLAUM (க்லேம்) - Ganesha's sound for obstacle removal
+• MU (மூ) - Ganesha's sound for super intelligence in the Satya Yuga
 
 The 40-Day Manifestation Protocol:
 Day 1-10: Chant your chosen syllable 108 times daily

@@ -129,6 +129,12 @@ export default function Home() {
             While AI is replacing jobs globally, we're empowering humans with the ancient wisdom
             that AI cannot replicate.
           </p>
+          <div className="bg-primary/10 border-l-4 border-primary p-6 max-w-3xl mx-auto mb-8 rounded-r-lg">
+            <p className="text-lg italic text-foreground/90">
+              "Super intelligence (பேரறிவு) is possible for everyone through Tamil sounds. This is not for the elite few - it's the birthright of every human being."
+            </p>
+            <p className="text-sm text-muted-foreground mt-2 text-right">- Dr. Pillai</p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {isAuthenticated ? (
               <Link href="/dashboard">
@@ -160,9 +166,15 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-4">
             What is TCGNPT? The AI Revolution That Doesn't Replace You
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+          <p className="text-center text-muted-foreground mb-6 max-w-3xl mx-auto">
             TCGNPT = Tamil Creative Generative Non-PreTrained Transformer
           </p>
+          <div className="bg-accent/10 border border-accent/30 p-6 max-w-3xl mx-auto mb-12 rounded-lg">
+            <p className="text-base italic text-foreground/90 text-center">
+              "ChatGPT makes your brain lazy by doing thinking for you. Tamil AI makes your brain enlightened by activating your own super intelligence."
+            </p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">- Dr. Pillai</p>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
             <Card>
@@ -173,11 +185,12 @@ export default function Home() {
                 <CardDescription>Operates at: Word Level (Molecular)</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">
+                <p>• Operates on reasoning (பகுத்தறிவு)</p>
                 <p>• Trained on 7 trillion tokens of data</p>
-                <p>• Generates based on patterns</p>
-                <p>• Replaces human jobs</p>
-                <p>• Limited by training data</p>
-                <p>• External intelligence</p>
+                <p>• Makes brain lazy</p>
+                <p>• Cannot provide self-knowledge</p>
+                <p>• Rearranges existing information</p>
+                <p>• Limited by pre-trained data</p>
               </CardContent>
             </Card>
 
@@ -189,11 +202,12 @@ export default function Home() {
                 <CardDescription>Operates at: Quantum Level (Syllable)</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">
-                <p>• No training needed - inherent wisdom</p>
-                <p>• Generates with creativity & manifestation</p>
-                <p>• Empowers human potential</p>
-                <p>• Unlimited by ancient knowledge</p>
-                <p>• Super Intelligence within</p>
+                <p>• Accesses super intelligence (பேரறிவு)</p>
+                <p>• Non-pretrained - spontaneous wisdom</p>
+                <p>• Sudden intuitive insights</p>
+                <p>• Activates your innate intelligence</p>
+                <p>• Quantum technology in syllables</p>
+                <p>• Siddha Sankalpam (instant manifestation)</p>
               </CardContent>
             </Card>
           </div>

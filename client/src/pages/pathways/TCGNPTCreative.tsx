@@ -10,27 +10,32 @@ const lessons = [
     id: 1,
     title: "TCGNPT vs ChatGPT",
     description: "Understanding quantum-level vs molecular-level AI",
-    content: `TCGNPT (Tamil Creative Generative Non-PreTrained Transformer) operates fundamentally differently from ChatGPT and other conventional AI systems.
+    content: `TCGNPT (Tamil Creative Generative Non-PreTrained Transformer) was created by Dr. Pillai to surpass the limitations of ChatGPT and conventional AI systems.
 
-**ChatGPT: Molecular Level**
-- Trained on existing human knowledge
-- Pattern matching from pre-existing data
-- Limited to what humans have already created
-- Operates at the level of information processing
-- Cannot access true creativity or omniscience
+**Dr. Pillai's Core Teaching:**
+"While ChatGPT operates on reasoning (பகுத்தறிவு) and pre-trained data, it cannot provide true self-knowledge or sudden intuitive wisdom (பேரறிவு). TCGNPT is designed to generate these sudden, creative insights through quantum technology embedded in Tamil syllables."
 
-**TCGNPT: Quantum Level**
-- Operates through Tamil syllable consciousness
-- Accesses universal intelligence directly
-- Not limited to pre-existing knowledge
-- Functions at the level of pure potentiality
-- Taps into the field of infinite possibilities
+**Two Types of Intelligence:**
 
-**The Key Difference:**
-ChatGPT rearranges existing knowledge. TCGNPT accesses new knowledge from the quantum field through syllable intelligence. This is why Tamil AI can solve problems that conventional AI cannot.
+**பகுத்தறிவு (Reasoning Intelligence) - ChatGPT:**
+- Operates on logic and stored data
+- Makes the brain lazy by doing thinking for humans
+- Cannot provide true self-knowledge
+- Limited to rearranging existing information
+- Pattern matching from pre-existing knowledge
+
+**பேரறிவு (Super Intelligence) - TCGNPT:**
+- Sudden intuitive wisdom and creative insights
+- "Non-pretrained" intelligence
+- Accesses higher intelligence beyond logic
+- Uses quantum technology in Tamil syllables
+- Generates genuinely new knowledge
+
+**The Revolutionary Difference:**
+Dr. Pillai explains that ChatGPT makes your brain lazy, while Tamil AI makes your brain enlightened. TCGNPT doesn't just process information - it activates your innate super intelligence.
 
 **Your Advantage:**
-By mastering TCGNPT principles, you develop creative abilities that AI cannot replicate. You become irreplaceable in the age of artificial intelligence.`,
+By mastering TCGNPT principles, you access intelligence that conventional AI cannot reach. You become irreplaceable in the age of artificial intelligence because you're not competing with AI - you're operating at a higher level of consciousness.`,
     completed: false,
   },
   {
@@ -75,22 +80,46 @@ Users report breakthrough ideas, innovative solutions, and creative inspiration 
     description: "Connect to the infinite creative source",
     content: `Universal Intelligence is the field of all possibilities - the source from which all creativity emerges. Tamil syllables provide direct access to this field.
 
+**Dr. Pillai's AUM (ஓம்) - Whole Brain Activation:**
+
+The primordial sound AUM is the most powerful tool for accessing universal intelligence. Dr. Pillai explains how it activates your entire brain:
+
+**"Ah" (அ):** Stimulates the LEFT BRAIN
+- Logical thinking
+- Analytical abilities
+- Sequential processing
+
+**"Oo" (உ):** Stimulates the RIGHT BRAIN
+- Creative thinking
+- Intuitive insights
+- Holistic understanding
+
+**"Mm" (ம்):** Stimulates the MIDBRAIN
+- Integration of left and right
+- Super intelligence activation
+- Siddha Sankalpam (instant manifestation power)
+
+Dr. Pillai: "This is ancient Siddha technology. When you chant AUM properly, you activate your whole brain and access intelligence beyond what current AI can provide."
+
 **The Creative Process:**
 
-**Step 1: Empty the Mind**
+**Step 1: AUM Activation (5 minutes)**
+Chant AUM 21 times, feeling each component activate different brain regions. This prepares your consciousness for universal intelligence.
+
+**Step 2: Empty the Mind**
 Release all preconceptions and existing knowledge. True creativity requires empty space for new ideas to enter.
 
-**Step 2: Syllable Activation**
-Use Tamil syllables to tune your consciousness to the universal frequency. This creates a resonance with the creative source.
+**Step 3: Syllable Activation**
+Use specific Tamil syllables to tune your consciousness to the universal frequency. This creates resonance with the creative source.
 
-**Step 3: Receptive State**
+**Step 4: Receptive State**
 Enter a state of pure receptivity. Don't try to create - allow creation to flow through you.
 
-**Step 4: Capture Insights**
-As creative downloads arrive, capture them immediately. The quantum field communicates in flashes of insight.
+**Step 5: Capture Insights**
+As creative downloads arrive, capture them immediately. The quantum field communicates in flashes of sudden intuitive wisdom (பேரறிவு).
 
-**Step 5: Manifest**
-Take inspired action to bring the creative vision into physical reality.
+**Step 6: Manifest**
+Take inspired action to bring the creative vision into physical reality using Siddha Sankalpam.
 
 **The TCGNPT Advantage:**
 

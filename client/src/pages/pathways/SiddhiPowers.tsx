@@ -12,6 +12,9 @@ const lessons = [
     description: "Ancient superhuman abilities through quantum consciousness",
     content: `Siddhi powers represent the superhuman capabilities developed by ancient Tamil Siddhas through mastery of consciousness. These are not myths, but documented abilities achieved through specific practices.
 
+**Dr. Pillai's Teaching:**
+"You can become the king even of Indra Lokam (heaven). This is not metaphor - it's about elevating your consciousness to divine levels through Tamil syllable technology."
+
 **The Eight Classical Siddhis:**
 - Anima: Ability to become infinitely small
 - Mahima: Ability to become infinitely large
@@ -24,6 +27,9 @@ const lessons = [
 
 **Modern Understanding:**
 These abilities operate at the quantum level of consciousness. What ancient texts described metaphorically, quantum physics now explains scientifically. Siddhi powers emerge when consciousness transcends normal limitations.
+
+**Siddha Sankalpam - Instant Manifestation:**
+Dr. Pillai teaches that through proper activation of the midbrain using the "Mm" sound in AUM, you can develop "Siddha Sankalpam" - the power to manifest thoughts instantly. This is the ultimate siddhi power.
 
 **Your Potential:**
 Every human possesses latent siddhi powers. Through Tamil syllable meditation and consciousness training, you can begin to activate these dormant capabilities.`,

@@ -38,6 +38,59 @@ export const appRouter = router({
       .query(async ({ input }) => {
         return await db.getThirukkuralByChapter(input.chapterNumber);
       }),
+    
+    getAIGuidance: publicProcedure
+      .input(z.object({ 
+        coupletId: z.number().optional(),
+        userContext: z.string().optional() 
+      }))
+      .mutation(async ({ input }) => {
+        const { invokeLLM } = await import("./_core/llm");
+        
+        let couplet = null;
+        if (input.coupletId) {
+          couplet = await db.getThirukkuralById(input.coupletId);
+        }
+        
+        const systemPrompt = `You are a wise Tamil scholar and life coach who helps people apply ancient Thirukkural wisdom to modern life challenges. 
+
+Your role is to:
+1. Understand the user's situation or question
+2. Find relevant Thirukkural couplets that apply
+3. Explain how the ancient wisdom addresses their specific challenge
+4. Provide practical, actionable guidance
+
+Be compassionate, insightful, and practical. Connect timeless wisdom to contemporary life.`;
+        
+        let userPrompt = input.userContext || "Please share wisdom from Thirukkural.";
+        
+        if (couplet) {
+          userPrompt = `Here is a Thirukkural couplet:
+
+Tamil: ${couplet.originalTamil}
+Translation: ${couplet.englishTranslation}
+Explanation: ${couplet.explanation}
+
+User's situation: ${input.userContext || "How can I apply this wisdom to my life?"}
+
+Provide personalized guidance on how to apply this wisdom.`;
+        }
+        
+        const result = await invokeLLM({
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userPrompt }
+          ],
+          maxTokens: 1000
+        });
+        
+        const guidance = result.choices[0]?.message?.content || "Unable to generate guidance at this time.";
+        
+        return {
+          guidance: typeof guidance === "string" ? guidance : JSON.stringify(guidance),
+          couplet
+        };
+      }),
   }),
 
   // Bookmarks

@@ -17,6 +17,10 @@ import Pricing from "./pages/Pricing";
 import SIS from "./pages/pathways/SIS";
 import Thirukkural from "./pages/pathways/Thirukkural";
 import TCGNPT from "./pages/pathways/TCGNPT";
+import SiddhiPowers from "./pages/pathways/SiddhiPowers";
+import TCGNPTCreative from "./pages/pathways/TCGNPTCreative";
+import TamilScienceFusion from "./pages/pathways/TamilScienceFusion";
+import GlobalTamilInfluence from "./pages/pathways/GlobalTamilInfluence";
 
 function Router() {
   return (
@@ -33,10 +37,10 @@ function Router() {
         {/* Pathway routes */}
         <Route path="/pathways/sis" component={SIS} />
         <Route path="/pathways/thirukkural" component={Thirukkural} />
-        <Route path="/pathways/tcgnpt" component={TCGNPT} />
-        <Route path="/pathways/siddhi" component={SIS} />
-        <Route path="/pathways/fusion" component={SIS} />
-        <Route path="/pathways/global" component={SIS} />
+        <Route path="/pathways/tcgnpt" component={TCGNPTCreative} />
+        <Route path="/pathways/siddhi" component={SiddhiPowers} />
+        <Route path="/pathways/fusion" component={TamilScienceFusion} />
+        <Route path="/pathways/global" component={GlobalTamilInfluence} />
         
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />

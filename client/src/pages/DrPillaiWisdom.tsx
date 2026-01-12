@@ -355,15 +355,15 @@ export default function DrPillaiWisdom() {
             <BookOpen className="w-6 h-6 text-orange-600" />
             <h2 className="text-3xl font-bold">Key Concepts</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-4">
             {filteredConcepts.map((concept) => (
               <Card key={concept.id} className="hover:shadow-lg transition-shadow border-l-4 border-l-orange-500">
-                <CardHeader>
-                  <CardTitle className="text-xl">{concept.title}</CardTitle>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xl break-words">{concept.title}</CardTitle>
                   <CardDescription className="text-base font-medium">{concept.titleEn}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700">{concept.description}</p>
+                  <p className="text-gray-700 text-sm leading-relaxed">{concept.description}</p>
                 </CardContent>
               </Card>
             ))}

@@ -89,16 +89,16 @@ export default function Profile() {
   const userTier = user.role === "admin" ? "advanced" : "beginner";
 
   // Calculate total progress across all pathways
-  const totalProgress = pathwayProgress
+  const totalProgress = pathwayProgress && pathwayProgress.length > 0
     ? Math.floor(
-        pathwayProgress.reduce((sum: number, p: any) => sum + p.completionPercentage, 0) /
+        pathwayProgress.reduce((sum: number, p: any) => sum + (p?.completionPercentage || 0), 0) /
           pathwayProgress.length
       )
     : 0;
 
   // Calculate total completed lessons
-  const totalLessons = pathwayProgress
-    ? pathwayProgress.reduce((sum: number, p: any) => sum + p.completedLessons, 0)
+  const totalLessons = pathwayProgress && pathwayProgress.length > 0
+    ? pathwayProgress.reduce((sum: number, p: any) => sum + (p?.completedLessons || 0), 0)
     : 0;
 
   // Calculate meditation streak (simplified - days with at least one session)

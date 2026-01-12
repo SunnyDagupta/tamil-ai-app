@@ -453,9 +453,13 @@ export async function markLessonComplete(userId: number, moduleName: string, les
 
   try {
     await db.execute(sql`
-      INSERT INTO lesson_completions (user_id, module_name, lesson_id, completed_at)
-      VALUES (${userId}, ${moduleName}, ${lessonId}, NOW())
-      ON DUPLICATE KEY UPDATE completed_at = NOW()
+      INSERT INTO user_lesson_progress (user_id, lesson_id, completed, completed_at)
+      SELECT ${userId}, l.id, 1, NOW()
+      FROM lessons l
+      JOIN learning_pathways lp ON l.pathway_id = lp.id
+      WHERE lp.title LIKE CONCAT('%', ${moduleName}, '%') AND l.title LIKE CONCAT('%', ${lessonId}, '%')
+      LIMIT 1
+      ON DUPLICATE KEY UPDATE completed = 1, completed_at = NOW()
     `);
     
     return { success: true };
@@ -471,10 +475,12 @@ export async function getUserCompletedLessons(userId: number) {
 
   try {
     const result = await db.execute(sql`
-      SELECT module_name, lesson_id, completed_at
-      FROM lesson_completions
-      WHERE user_id = ${userId}
-      ORDER BY completed_at DESC
+      SELECT lp.title as module_name, l.title as lesson_id, ulp.completed_at
+      FROM user_lesson_progress ulp
+      JOIN lessons l ON ulp.lesson_id = l.id
+      JOIN learning_pathways lp ON l.pathway_id = lp.id
+      WHERE ulp.user_id = ${userId} AND ulp.completed = 1
+      ORDER BY ulp.completed_at DESC
     `);
     
     return (result[0] as any) as Array<{ module_name: string; lesson_id: string; completed_at: Date }>;
@@ -491,8 +497,13 @@ export async function isLessonComplete(userId: number, moduleName: string, lesso
   try {
     const result = await db.execute(sql`
       SELECT COUNT(*) as count
-      FROM lesson_completions
-      WHERE user_id = ${userId} AND module_name = ${moduleName} AND lesson_id = ${lessonId}
+      FROM user_lesson_progress ulp
+      JOIN lessons l ON ulp.lesson_id = l.id
+      JOIN learning_pathways lp ON l.pathway_id = lp.id
+      WHERE ulp.user_id = ${userId} 
+        AND lp.title LIKE CONCAT('%', ${moduleName}, '%') 
+        AND l.title LIKE CONCAT('%', ${lessonId}, '%')
+        AND ulp.completed = 1
     `);
     
     const rows = (result[0] as any) as Array<{ count: number }>;

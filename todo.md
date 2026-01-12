@@ -225,3 +225,28 @@
 - [x] Remove gating logic from Learn page
 - [x] Ensure all 6 modules are accessible to all users
 - [ ] Test module access
+
+
+## Fix Authentication Loop (NEW)
+- [ ] Disable forced authentication redirect
+- [ ] Allow guest/anonymous access to app
+- [ ] Test app loads without login prompt
+
+
+## UI/UX Review & Best Practices (NEW)
+- [x] Complete PWA setup with service worker registration
+- [x] Fix NaN% bug on Profile page
+- [x] Add progress indicators to module cards on Learn page
+- [x] Fix Key Concepts card overflow on Dr. Pillai Wisdom page
+- [x] Fix database table reference (lesson_completions -> user_lesson_progress)
+- [ ] Review and fix navigation consistency
+- [ ] Improve accessibility (ARIA labels, focus states, contrast)
+- [ ] Add loading states and skeleton screens
+- [ ] Implement proper error handling UI
+- [ ] Add pull-to-refresh for mobile
+- [ ] Improve touch targets (min 44x44px)
+- [ ] Add haptic feedback for interactions
+- [ ] Review typography hierarchy
+- [ ] Ensure consistent spacing and padding
+- [ ] Add empty states for lists
+- [ ] Implement smooth page transitions

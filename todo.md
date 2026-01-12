@@ -93,3 +93,29 @@
 - [x] Fix search functionality to properly search through Tamil text, English translation, and explanations
 - [x] Test search with various queries (illness, disease, king, love, etc.)
 - [x] Ensure search results are accurate and relevant
+
+
+## Audio-First Experience (NEW REQUIREMENT)
+- [ ] Create TextToSpeech component with play button for all text content
+- [ ] Add text-to-speech to all lesson content
+- [ ] Add text-to-speech to Thirukkural couplets
+- [ ] Add text-to-speech to meditation descriptions
+- [ ] Use Web Speech API for browser-based TTS
+- [ ] Add pause/resume controls for TTS playback
+
+## Audio Player & Progress Tracking (NEW REQUIREMENT)
+- [ ] Build meditation audio player component
+- [ ] Add play/pause/seek controls
+- [ ] Implement session progress tracking
+- [ ] Track session completion in database
+- [ ] Calculate and display meditation streaks
+- [ ] Show total meditation time statistics
+- [ ] Add session history to user dashboard
+
+## Complete User Dashboard
+- [ ] Display real meditation streaks
+- [ ] Show completed lessons count
+- [ ] Display achievements earned
+- [ ] Show statistics across all modules
+- [ ] Add progress charts/visualizations
+- [ ] Show recent activity feed

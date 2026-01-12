@@ -1,8 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { 
   Brain, 
@@ -16,8 +14,6 @@ import {
 } from "lucide-react";
 
 export default function HomeApp() {
-  const { user, isAuthenticated } = useAuth();
-
   const pathways = [
     {
       id: 1,
@@ -26,7 +22,6 @@ export default function HomeApp() {
       icon: Atom,
       color: "bg-orange-500",
       path: "/pathways/sis",
-      tier: "beginner",
     },
     {
       id: 2,
@@ -35,7 +30,6 @@ export default function HomeApp() {
       icon: BookOpen,
       color: "bg-purple-500",
       path: "/pathways/thirukkural",
-      tier: "beginner",
     },
     {
       id: 3,
@@ -44,7 +38,6 @@ export default function HomeApp() {
       icon: Sparkles,
       color: "bg-pink-500",
       path: "/pathways/siddhi",
-      tier: "pro",
     },
     {
       id: 4,
@@ -53,7 +46,6 @@ export default function HomeApp() {
       icon: Brain,
       color: "bg-blue-500",
       path: "/pathways/tcgnpt",
-      tier: "pro",
     },
     {
       id: 5,
@@ -62,7 +54,6 @@ export default function HomeApp() {
       icon: Zap,
       color: "bg-yellow-500",
       path: "/pathways/fusion",
-      tier: "advanced",
     },
     {
       id: 6,
@@ -71,7 +62,6 @@ export default function HomeApp() {
       icon: Globe,
       color: "bg-green-500",
       path: "/pathways/global",
-      tier: "advanced",
     },
   ];
 
@@ -79,16 +69,9 @@ export default function HomeApp() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-orange-50 to-purple-50 dark:from-orange-950 dark:to-purple-950 px-6 py-8">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h1 className="text-2xl font-bold">Tamil AI</h1>
-            <p className="text-sm text-muted-foreground">by Dr. Pillai</p>
-          </div>
-          {!isAuthenticated && (
-            <a href={getLoginUrl()}>
-              <Button size="sm">Sign In</Button>
-            </a>
-          )}
+        <div className="mb-4">
+          <h1 className="text-2xl font-bold">Tamil AI</h1>
+          <p className="text-sm text-muted-foreground">by Dr. Pillai</p>
         </div>
 
         <div className="mt-6">
@@ -100,23 +83,21 @@ export default function HomeApp() {
           </p>
         </div>
 
-        {isAuthenticated && user && (
-          <Card className="mt-6">
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Welcome back,</p>
-                  <p className="font-semibold">{user.name || "Student"}</p>
-                </div>
-                <Link href="/profile">
-                  <Button variant="outline" size="sm">
-                    View Profile
-                  </Button>
-                </Link>
+        <Card className="mt-6">
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Welcome,</p>
+                <p className="font-semibold">Seeker of Wisdom</p>
               </div>
-            </CardContent>
-          </Card>
-        )}
+              <Link href="/profile">
+                <Button variant="outline" size="sm">
+                  View Profile
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Quick Actions */}
@@ -195,14 +176,7 @@ export default function HomeApp() {
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold">{pathway.title}</h4>
-                          {pathway.tier !== "beginner" && (
-                            <Badge variant="secondary" className="text-xs">
-                              {pathway.tier}
-                            </Badge>
-                          )}
-                        </div>
+                        <h4 className="font-semibold">{pathway.title}</h4>
                         <p className="text-sm text-muted-foreground">
                           {pathway.description}
                         </p>
@@ -216,27 +190,6 @@ export default function HomeApp() {
           })}
         </div>
       </div>
-
-      {/* Upgrade CTA */}
-      {isAuthenticated && (
-        <div className="px-6 py-6">
-          <Card className="bg-gradient-to-br from-orange-500 to-purple-600 text-white border-0">
-            <CardHeader>
-              <CardTitle>Unlock All Pathways</CardTitle>
-              <CardDescription className="text-orange-50">
-                Get full access to all 6 modules, live sessions, and exclusive content
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Link href="/pricing">
-                <Button variant="secondary" className="w-full">
-                  View Plans
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-      )}
 
       {/* About Section */}
       <div className="px-6 py-6 pb-24">

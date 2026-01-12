@@ -228,8 +228,9 @@
 
 
 ## Fix Authentication Loop (NEW)
-- [ ] Disable forced authentication redirect
-- [ ] Allow guest/anonymous access to app
+- [x] Disable forced authentication redirect
+- [x] Allow guest/anonymous access to app
+- [x] Remove login buttons and auth UI
 - [ ] Test app loads without login prompt
 
 

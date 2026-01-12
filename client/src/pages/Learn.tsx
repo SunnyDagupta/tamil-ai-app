@@ -11,36 +11,33 @@ import {
   ArrowRight,
   CheckCircle2
 } from "lucide-react";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 
 export default function Learn() {
-  const { isAuthenticated } = useAuth();
-
-  // Fetch progress for all pathways
+  // Fetch progress for all pathways (works without auth)
   const { data: progress1 } = trpc.pathways.myProgress.useQuery(
     { pathwayId: 1 },
-    { enabled: isAuthenticated }
+    { retry: false }
   );
   const { data: progress2 } = trpc.pathways.myProgress.useQuery(
     { pathwayId: 2 },
-    { enabled: isAuthenticated }
+    { retry: false }
   );
   const { data: progress3 } = trpc.pathways.myProgress.useQuery(
     { pathwayId: 3 },
-    { enabled: isAuthenticated }
+    { retry: false }
   );
   const { data: progress4 } = trpc.pathways.myProgress.useQuery(
     { pathwayId: 4 },
-    { enabled: isAuthenticated }
+    { retry: false }
   );
   const { data: progress5 } = trpc.pathways.myProgress.useQuery(
     { pathwayId: 5 },
-    { enabled: isAuthenticated }
+    { retry: false }
   );
   const { data: progress6 } = trpc.pathways.myProgress.useQuery(
     { pathwayId: 6 },
-    { enabled: isAuthenticated }
+    { retry: false }
   );
 
   const progressMap: Record<number, any> = {

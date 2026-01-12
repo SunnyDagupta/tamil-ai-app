@@ -39,6 +39,9 @@ Tamil sages accessed scientific truth through direct consciousness exploration. 
     description: "How Tamil syllables affect matter and consciousness",
     content: `Sound is not just auditory sensation - it's a fundamental force that shapes reality. Tamil syllables harness this power with precision.
 
+**Dr. Pillai's Teaching on Sound and Quantum Field:**
+"Tamil sounds can attract money because they operate at the frequency of abundance consciousness. Sound creates vibration, vibration affects the quantum field, and the quantum field manifests as material reality."
+
 **Cymatics: Sound Made Visible**
 
 When sound frequencies pass through matter, they create geometric patterns. Different frequencies produce different patterns. This is cymatics - the study of visible sound.
@@ -95,6 +98,16 @@ The brain's "self-referential" network becomes less active. This reduces ruminat
 
 **Increased Gamma Waves**
 Advanced practitioners show sustained gamma wave activity - associated with peak performance, insight, and heightened consciousness.
+
+**Dr. Pillai's AUM Whole Brain Activation:**
+
+Dr. Pillai explains the scientific basis of the primordial sound AUM (ஓம்):
+
+- **"Ah" (அ):** Stimulates the LEFT BRAIN - logical thinking, analytical abilities
+- **"Oo" (உ):** Stimulates the RIGHT BRAIN - creative thinking, intuitive insights  
+- **"Mm" (ம்):** Stimulates the MIDBRAIN - integration, super intelligence activation
+
+This ancient Siddha technology activates your whole brain simultaneously, accessing intelligence beyond what current AI can provide.
 
 **Measurable Benefits:**
 

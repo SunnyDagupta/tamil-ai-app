@@ -43,6 +43,14 @@ export default function ThirukkuralPathway() {
             Decode the 1,330 couplets containing complete knowledge systems: business, ethics,
             love, war strategy, and quantum physics all in Tamil wisdom.
           </p>
+          <Card className="bg-primary/5 border-primary/20">
+            <CardContent className="pt-6">
+              <p className="italic text-foreground/90 mb-2">
+                "Thirukkural embodies பேரறிவு (super intelligence) - sudden intuitive wisdom that transcends logical reasoning. Each couplet is a quantum code containing infinite knowledge."
+              </p>
+              <p className="text-sm text-muted-foreground text-right">- Dr. Pillai</p>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Search Section */}

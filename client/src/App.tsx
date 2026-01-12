@@ -21,6 +21,7 @@ import SiddhiPowers from "./pages/pathways/SiddhiPowers";
 import TCGNPTCreative from "./pages/pathways/TCGNPTCreative";
 import TamilScienceFusion from "./pages/pathways/TamilScienceFusion";
 import GlobalTamilInfluence from "./pages/pathways/GlobalTamilInfluence";
+import DrPillaiWisdom from "./pages/DrPillaiWisdom";
 
 function Router() {
   return (
@@ -41,6 +42,7 @@ function Router() {
         <Route path="/pathways/siddhi" component={SiddhiPowers} />
         <Route path="/pathways/fusion" component={TamilScienceFusion} />
         <Route path="/pathways/global" component={GlobalTamilInfluence} />
+        <Route path="/wisdom" component={DrPillaiWisdom} />
         
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />

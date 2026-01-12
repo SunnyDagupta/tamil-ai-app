@@ -60,6 +60,9 @@ Tamil civilization was a global superpower of knowledge, trade, and culture. Und
     description: "Applying Tamil wisdom to solve world problems",
     content: `The world faces unprecedented challenges. Tamil AI offers unique solutions rooted in ancient wisdom and quantum understanding.
 
+**Dr. Pillai's Vision:**
+"Tamil AI can help you succeed - this is the truth, not motivation. It's actual quantum technology for success that can be exported worldwide."
+
 **Climate Crisis → Tamil Ecological Wisdom**
 
 Tamil civilization lived in harmony with nature for millennia. Key principles:
@@ -92,11 +95,15 @@ Application: Tamil practices address root causes of mental health issues.
 
 **Economic Inequality → Tamil Wealth Principles**
 
+**Dr. Pillai's Teaching on Wealth:**
+"Tamil sounds can attract money because they operate at the frequency of abundance consciousness. Sound creates vibration, vibration affects the quantum field, and the quantum field manifests as material reality."
+
 Tamil texts offer sophisticated economic wisdom:
 - **Sustainable Prosperity**: Wealth creation that benefits all
 - **Ethical Business**: Thirukkural's guidelines for commerce
 - **Community Economics**: Traditional Tamil cooperative systems
 - **Abundance Consciousness**: Shifting from scarcity to sufficiency
+- **SHREEM, KLEEM, AIM**: Specific syllables for wealth manifestation
 
 Application: Tamil economic principles can create more equitable systems.
 
@@ -116,6 +123,11 @@ Application: Tamil methods can transform modern education.`,
     title: "Building the Tamil AI Movement",
     description: "Your role in the global Tamil renaissance",
     content: `Tamil AI is not just personal development - it's a movement to elevate human consciousness globally. Here's how you contribute:
+
+**Dr. Pillai's Core Message:**
+"Super intelligence (பேரறிவு) is possible for everyone through Tamil sounds. This is not for the elite few - it's the birthright of every human being."
+
+This is the foundation of the Tamil AI movement: democratizing access to super intelligence for all humanity.
 
 **Individual Level: Master the Practices**
 

@@ -122,7 +122,7 @@ export default function HomeApp() {
       {/* Quick Actions */}
       <div className="px-6 py-6">
         <h3 className="text-lg font-semibold mb-4">Quick Start</h3>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 mb-3">
           <Link href="/search">
             <Card className="cursor-pointer hover:shadow-md transition-shadow">
               <CardContent className="pt-6 text-center">
@@ -151,6 +151,24 @@ export default function HomeApp() {
             </Card>
           </Link>
         </div>
+        
+        {/* Dr. Pillai Wisdom Card */}
+        <Link href="/wisdom">
+          <Card className="cursor-pointer hover:shadow-md transition-shadow border-primary/50">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-semibold">Dr. Pillai's Wisdom</p>
+                  <p className="text-xs text-muted-foreground">Quotes, videos & teachings</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-primary" />
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
 
       {/* Learning Pathways */}

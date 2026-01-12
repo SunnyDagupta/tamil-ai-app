@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, ArrowLeft } from "lucide-react";
+import { Check, ArrowLeft, IndianRupee } from "lucide-react";
 import { Link } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getLoginUrl } from "@/const";
@@ -25,7 +25,7 @@ export default function Pricing() {
     },
     {
       name: "Pro",
-      price: "$29",
+      price: "499",
       period: "/month",
       description: "Full access to all learning modules",
       features: [
@@ -41,7 +41,7 @@ export default function Pricing() {
     },
     {
       name: "Advanced",
-      price: "$99",
+      price: "999",
       period: "/month",
       description: "Premium experience with live sessions",
       features: [
@@ -96,7 +96,8 @@ export default function Pricing() {
               <CardHeader>
                 <CardTitle className="text-2xl">{tier.name}</CardTitle>
                 <CardDescription>{tier.description}</CardDescription>
-                <div className="mt-4">
+                <div className="mt-4 flex items-baseline gap-1">
+                  {tier.price !== "Free" && <IndianRupee className="w-8 h-8 text-primary" />}
                   <span className="text-4xl font-bold">{tier.price}</span>
                   {tier.period && (
                     <span className="text-muted-foreground">{tier.period}</span>
@@ -156,8 +157,8 @@ export default function Pricing() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  We accept all major credit cards (Visa, Mastercard, American Express) and debit
-                  cards through our secure Stripe payment processor.
+                  We accept all major credit cards, debit cards, UPI, net banking, and wallets
+                  through our secure Razorpay payment gateway.
                 </p>
               </CardContent>
             </Card>

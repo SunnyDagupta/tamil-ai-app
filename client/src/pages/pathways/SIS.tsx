@@ -5,6 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, BookOpen, Play, CheckCircle2, Lock } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
+import { MarkCompleteButton } from "@/components/MarkCompleteButton";
 
 export default function SIS() {
   const [expandedLesson, setExpandedLesson] = useState<number | null>(null);
@@ -272,10 +273,13 @@ What do you want to manifest? Choose your syllable and commit to the 40-day prot
                     ))}
                   </div>
                   <div className="flex gap-2 mt-6">
-                    <Button className="flex-1">
-                      <BookOpen className="w-4 h-4 mr-2" />
-                      Mark as Complete
-                    </Button>
+                    <MarkCompleteButton 
+                      moduleName="SIS"
+                      lessonId={`lesson-${lesson.id}`}
+                      onComplete={() => {
+                        // Optionally refresh or show success message
+                      }}
+                    />
                     {lesson.id < lessons.length && (
                       <Button
                         variant="outline"

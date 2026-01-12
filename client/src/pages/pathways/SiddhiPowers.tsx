@@ -1,8 +1,9 @@
-import { ArrowLeft, Zap, CheckCircle } from "lucide-react";
+import { ArrowLeft, BookOpen, CheckCircle, Zap } from "lucide-react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { TextToSpeech } from "@/components/TextToSpeech";
+import { MarkCompleteButton } from "@/components/MarkCompleteButton";
 import { trpc } from "@/lib/trpc";
 
 const lessons = [
@@ -227,9 +228,10 @@ export default function SiddhiPowers() {
 
               <TextToSpeech text={lesson.content} />
 
-              <Button className="w-full">
-                {lesson.completed ? "Review Lesson" : "Complete Lesson"}
-              </Button>
+              <MarkCompleteButton 
+                moduleName="SiddhiPowers"
+                lessonId={`lesson-${lesson.id}`}
+              />
             </Card>
           ))}
         </div>

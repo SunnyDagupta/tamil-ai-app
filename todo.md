@@ -197,3 +197,25 @@
 - [x] Send reminder notifications at user-set times
 - [x] Add streak visualization to Profile
 - [x] Test notification delivery
+
+
+## Extract Meditation Segments from Dr. Pillai Videos (NEW)
+- [ ] Analyze all 7 downloaded videos to identify meditation segment timestamps
+- [ ] Extract only meditation/practice portions (not full teaching videos)
+- [ ] Create short meditation clips (1-3 minutes each)
+- [ ] Map each meditation clip to appropriate learning module
+- [ ] Upload meditation clips to S3 storage
+- [ ] Update meditation database with real audio URLs
+- [ ] Test audio playback in meditation player
+- [ ] Verify meditation clips match module content
+
+
+## Integrate MarkCompleteButton into All Lessons (NEW)
+- [x] Add MarkCompleteButton to Module 1 (SIS) - 5 lessons
+- [x] Add MarkCompleteButton to Module 2 (Thirukkural) - 5 lessons
+- [x] Add MarkCompleteButton to Module 3 (Siddhi Powers) - 5 lessons
+- [x] Add MarkCompleteButton to Module 4 (TCGNPT) - 5 lessons
+- [x] Add MarkCompleteButton to Module 5 (Tamil-Science Fusion) - 5 lessons
+- [x] Add MarkCompleteButton to Module 6 (Global Tamil Influence) - 5 lessons
+- [ ] Test completion tracking across all modules
+- [ ] Verify progress updates in Profile dashboard

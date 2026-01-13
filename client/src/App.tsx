@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -12,6 +13,7 @@ import Profile from "./pages/Profile";
 import FAQ from "./pages/FAQ";
 import Testimonials from "./pages/Testimonials";
 import Pricing from "./pages/Pricing";
+import Onboarding from "./components/Onboarding";
 
 // Pathway pages
 import SIS from "./pages/pathways/SIS";
@@ -22,6 +24,8 @@ import TCGNPTCreative from "./pages/pathways/TCGNPTCreative";
 import TamilScienceFusion from "./pages/pathways/TamilScienceFusion";
 import GlobalTamilInfluence from "./pages/pathways/GlobalTamilInfluence";
 import DrPillaiWisdom from "./pages/DrPillaiWisdom";
+
+const ONBOARDING_KEY = "tamil-ai-onboarding-complete";
 
 function Router() {
   return (
@@ -52,12 +56,38 @@ function Router() {
 }
 
 function App() {
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if user has completed onboarding
+    const hasCompletedOnboarding = localStorage.getItem(ONBOARDING_KEY);
+    if (!hasCompletedOnboarding) {
+      setShowOnboarding(true);
+    }
+    setIsLoading(false);
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    localStorage.setItem(ONBOARDING_KEY, "true");
+    setShowOnboarding(false);
+  };
+
+  // Show nothing while checking localStorage
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          {showOnboarding ? (
+            <Onboarding onComplete={handleOnboardingComplete} />
+          ) : (
+            <Router />
+          )}
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

@@ -252,3 +252,16 @@
 - [ ] Ensure consistent spacing and padding
 - [ ] Add empty states for lists
 - [ ] Implement smooth page transitions
+
+
+## Onboarding Welcome Flow (NEW)
+- [x] Create Onboarding component with 3 screens
+- [x] Screen 1: Welcome to Tamil AI - introduce the app purpose
+- [x] Screen 2: Explain the 6 learning modules
+- [x] Screen 3: Guide to start learning journey
+- [x] Add swipeable navigation between screens
+- [x] Add progress dots indicator
+- [x] Add Skip and Next buttons
+- [x] Implement localStorage to track first-time visitors
+- [x] Show onboarding only on first visit
+- [x] Test onboarding flow

@@ -23,7 +23,7 @@ const screens = [
     id: 2,
     title: "6 Learning Pathways",
     subtitle: "Your Journey to Wisdom",
-    description: "Master Tamil syllables (SIS), explore 1,330 Thirukkural couplets, develop Siddhi powers, learn TCGNPT, discover Tamil-Science fusion, and join the global Tamil community.",
+    description: "Master Tamil syllables (SIS), explore 1,330 Thirukkural couplets, develop Siddhi powers, learn TCGNPT, discover Tamil-Science fusion, and join the global Tamil AI community.",
     icon: BookOpen,
     gradient: "from-purple-500 to-indigo-500",
     bgGradient: "from-purple-50 to-indigo-50",

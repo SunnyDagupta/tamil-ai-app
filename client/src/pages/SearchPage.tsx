@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search as SearchIcon, Bookmark, BookmarkCheck, Loader2, MessageCircle, Sparkles } from "lucide-react";
+import { Search as SearchIcon, Bookmark, BookmarkCheck, Loader2, MessageCircle, Sparkles, Share2 } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
 
@@ -226,17 +226,39 @@ export default function SearchPage() {
                       <div className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed">
                         {guidance}
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => {
-                          setGuidance(null);
-                          setLifeQuestion("");
-                        }}
-                        className="mt-4 text-purple-600 hover:text-purple-700"
-                      >
-                        Ask another question
-                      </Button>
+                      <div className="mt-4 flex gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            const shareText = `Thirukkural Wisdom:\n\n${guidance.substring(0, 200)}...\n\nGet personalized guidance at ${window.location.origin}`;
+                            if (navigator.share) {
+                              navigator.share({
+                                title: 'Thirukkural Wisdom',
+                                text: shareText,
+                              }).catch(() => {});
+                            } else {
+                              navigator.clipboard.writeText(shareText);
+                              toast.success('Copied to clipboard!');
+                            }
+                          }}
+                          className="text-orange-600 hover:text-orange-700"
+                        >
+                          <Share2 className="w-4 h-4 mr-2" />
+                          Share
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setGuidance(null);
+                            setLifeQuestion("");
+                          }}
+                          className="text-purple-600 hover:text-purple-700"
+                        >
+                          Ask another question
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>

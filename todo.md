@@ -327,3 +327,9 @@
 - [x] Update LLM prompt to focus more on Thirukkural couplets
 - [x] Increase response length to 200-250 words (from 150)
 - [x] Ensure mobile-friendly layout and button placement
+
+
+## Social Media Share Feature (NEW)
+- [x] Add share button to wisdom response card
+- [x] Support sharing to Twitter, Facebook, WhatsApp
+- [x] Format shared text with wisdom excerpt and app link

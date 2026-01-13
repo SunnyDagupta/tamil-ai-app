@@ -10,8 +10,10 @@ import {
   Atom,
   ArrowRight,
   Play,
-  Search
+  Search,
+  MessageCircle
 } from "lucide-react";
+import AskForWisdom from "@/components/AskForWisdom";
 
 export default function HomeApp() {
   const pathways = [
@@ -99,6 +101,11 @@ export default function HomeApp() {
         <p className="text-center text-muted-foreground mt-4 max-w-xs mx-auto">
           Unlock your Super Intelligence through ancient Tamil wisdom
         </p>
+      </div>
+
+      {/* Ask for Wisdom - Primary Feature */}
+      <div className="px-6 py-2">
+        <AskForWisdom />
       </div>
 
       {/* Quick Actions - Prominent CTAs */}

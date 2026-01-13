@@ -7,10 +7,16 @@ import { Badge } from "@/components/ui/badge";
 import { Search as SearchIcon, Bookmark, BookmarkCheck, Loader2 } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
+import AskForWisdom from "@/components/AskForWisdom";
 
 export default function Search() {
   const [query, setQuery] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCouplet, setSelectedCouplet] = useState<{
+    id: number;
+    tamil: string;
+    english: string;
+  } | null>(null);
   const { isAuthenticated } = useAuth();
 
   const { data: results, isLoading } = trpc.thirukkural.search.useQuery(
@@ -69,7 +75,7 @@ export default function Search() {
             </p>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 mb-6">
             <Input
               placeholder="Search by keywords, themes, or wisdom..."
               value={query}
@@ -85,6 +91,13 @@ export default function Search() {
               )}
             </Button>
           </div>
+
+          {/* Ask for Wisdom - Prominent Feature */}
+          <AskForWisdom 
+            coupletId={selectedCouplet?.id}
+            coupletTamil={selectedCouplet?.tamil}
+            coupletEnglish={selectedCouplet?.english}
+          />
         </div>
 
         {/* Search Results */}
@@ -168,6 +181,23 @@ export default function Search() {
                       <p className="text-muted-foreground">{couplet.explanation}</p>
                     </div>
                   )}
+                  
+                  {/* Ask Wisdom for this specific couplet */}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setSelectedCouplet({
+                      id: couplet.id,
+                      tamil: couplet.originalTamil,
+                      english: couplet.englishTranslation,
+                    })}
+                    className="mt-2 text-orange-600 border-orange-200 hover:bg-orange-50"
+                  >
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Ask how to apply this wisdom
+                  </Button>
                 </div>
               </CardContent>
             </Card>

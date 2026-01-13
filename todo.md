@@ -272,3 +272,11 @@
 - [x] Add animated icon like onboarding screens
 - [x] Use பேரறிவு (Super Intelligence) branding
 - [x] Create visual consistency across app
+
+
+## LLM Thirukkural Guidance Accessibility (NEW)
+- [x] Verify LLM endpoint exists in server routers
+- [x] Check if UI component for asking questions exists
+- [x] Make feature prominently accessible from Search/Thirukkural pages
+- [x] Add "Ask for Wisdom" button or section
+- [x] Test LLM guidance feature

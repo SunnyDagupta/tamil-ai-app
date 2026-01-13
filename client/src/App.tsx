@@ -24,6 +24,7 @@ import TCGNPTCreative from "./pages/pathways/TCGNPTCreative";
 import TamilScienceFusion from "./pages/pathways/TamilScienceFusion";
 import GlobalTamilInfluence from "./pages/pathways/GlobalTamilInfluence";
 import DrPillaiWisdom from "./pages/DrPillaiWisdom";
+import Attribution from "./pages/Attribution";
 
 const ONBOARDING_KEY = "tamil-ai-onboarding-complete";
 
@@ -47,6 +48,7 @@ function Router() {
         <Route path="/pathways/fusion" component={TamilScienceFusion} />
         <Route path="/pathways/global" component={GlobalTamilInfluence} />
         <Route path="/wisdom" component={DrPillaiWisdom} />
+        <Route path="/attribution" component={Attribution} />
         
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />

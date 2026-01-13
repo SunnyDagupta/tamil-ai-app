@@ -1,0 +1,43 @@
+{
+  "query": "SELECT COUNT(*) as total FROM thirukkural; SELECT * FROM thirukkural LIMIT 3;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Bbr8mAUtzHHaqv.1cd6340b9037 --database ZK9Qzt6XVuFXP2rc6N4SK8 --execute SELECT COUNT(*) as total FROM thirukkural; SELECT * FROM thirukkural LIMIT 3;",
+  "rows": [
+    {
+      "total": "1330"
+    },
+    {
+      "total": "id\tcouplet_number\tchapter_number\tchapter_name\tchapter_name_tamil\tsection_name\toriginal_tamil\ttransliteration\tenglish_translation\texplanation\tthemes\tkeywords\tis_premium\tcreatedAt"
+    },
+    {
+      "total": "30011\t1\t1\tChapter 1\tNULL\tNULL\tஅகர முதல எழுத்தெல்லாம் ஆதி"
+    },
+    {
+      "total": "பகவன் முதற்றே உலகு.\tAkara Mudhala Ezhuththellaam Aadhi"
+    },
+    {
+      "total": "Pakavan Mudhatre Ulaku\t'A' leads letters; the Ancient Lord Leads and lords the entire world\tAs the letter A is the first of all letters, so the eternal God is first in the world\tNULL\tNULL\t0\t2026-01-12 08:44:04"
+    },
+    {
+      "total": "30012\t2\t1\tChapter 1\tNULL\tNULL\tகற்றதனால் ஆய பயனென்கொல் வாலறிவன்"
+    },
+    {
+      "total": "நற்றாள் தொழாஅர் எனின்.\tKatradhanaal Aaya Payanenkol Vaalarivan"
+    },
+    {
+      "total": "Natraal Thozhaaar Enin\tThat lore is vain which does not fall  At His good feet who knoweth all\tWhat Profit have those derived from learning, who worship not the good feet of Him who is possessed of pure knowledge ?\tNULL\tNULL\t0\t2026-01-12 08:44:04"
+    },
+    {
+      "total": "30013\t3\t1\tChapter 1\tNULL\tNULL\tமலர்மிசை ஏகினான் மாணடி சேர்ந்தார்"
+    },
+    {
+      "total": "நிலமிசை நீடுவாழ் வார்.\tMalarmisai Ekinaan Maanati Serndhaar"
+    },
+    {
+      "total": "Nilamisai Neetuvaazh Vaar\tLong they live on earth who gain The feet of God in florid brain\tThey who are united to the glorious feet of Him who passes swiftly over the flower of the mind, shall flourish long above all worlds\tNULL\tNULL\t0\t2026-01-12 08:44:04"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\n1330\nid\tcouplet_number\tchapter_number\tchapter_name\tchapter_name_tamil\tsection_name\toriginal_tamil\ttransliteration\tenglish_translation\texplanation\tthemes\tkeywords\tis_premium\tcreatedAt\n30011\t1\t1\tChapter 1\tNULL\tNULL\tஅகர முதல எழுத்தெல்லாம் ஆதி\nபகவன் முதற்றே உலகு.\tAkara Mudhala Ezhuththellaam Aadhi\nPakavan Mudhatre Ulaku\t'A' leads letters; the Ancient Lord Leads and lords the entire world\tAs the letter A is the first of all letters, so the eternal God is first in the world\tNULL\tNULL\t0\t2026-01-12 08:44:04\n30012\t2\t1\tChapter 1\tNULL\tNULL\tகற்றதனால் ஆய பயனென்கொல் வாலறிவன்\nநற்றாள் தொழாஅர் எனின்.\tKatradhanaal Aaya Payanenkol Vaalarivan\nNatraal Thozhaaar Enin\tThat lore is vain which does not fall  At His good feet who knoweth all\tWhat Profit have those derived from learning, who worship not the good feet of Him who is possessed of pure knowledge ?\tNULL\tNULL\t0\t2026-01-12 08:44:04\n30013\t3\t1\tChapter 1\tNULL\tNULL\tமலர்மிசை ஏகினான் மாணடி சேர்ந்தார்\nநிலமிசை நீடுவாழ் வார்.\tMalarmisai Ekinaan Maanati Serndhaar\nNilamisai Neetuvaazh Vaar\tLong they live on earth who gain The feet of God in florid brain\tThey who are united to the glorious feet of Him who passes swiftly over the flower of the mind, shall flourish long above all worlds\tNULL\tNULL\t0\t2026-01-12 08:44:04\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

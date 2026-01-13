@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as total_couplets FROM thirukkural;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Bbr8mAUtzHHaqv.1cd6340b9037 --database ZK9Qzt6XVuFXP2rc6N4SK8 --execute SELECT COUNT(*) as total_couplets FROM thirukkural;",
+  "rows": [
+    {
+      "total_couplets": "1330"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_couplets\n1330\n",
+  "stderr": "",
+  "execution_time_ms": 173
+}

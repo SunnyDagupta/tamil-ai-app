@@ -262,6 +262,17 @@ export default function Profile() {
             </div>
           </CardContent>
         </Card>
+        
+        <Link href="/attribution">
+          <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <CardContent className="p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <BookOpen className="w-5 h-5" />
+                <span className="font-medium">Attribution & Sources</span>
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       </div>
     </div>
   );

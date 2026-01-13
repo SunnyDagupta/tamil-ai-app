@@ -354,3 +354,7 @@
 ## Auto-scroll to LLM Response (NEW)
 - [x] Add auto-scroll functionality when user presses Enter on LLM guidance
 - [x] Scroll to show the generated answer immediately after submission
+
+
+## Remove Suggested Question (NEW)
+- [x] Remove "How do I deal with a difficult boss?" from suggested questions on Search page

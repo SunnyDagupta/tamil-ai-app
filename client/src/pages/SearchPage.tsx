@@ -83,10 +83,10 @@ export default function SearchPage() {
   };
 
   const suggestedQuestions = [
-    "How do I deal with a difficult boss?",
     "I'm feeling lost in my career",
     "How can I improve my relationships?",
     "I'm struggling with self-discipline",
+    "How can I find inner peace?",
   ];
 
   return (

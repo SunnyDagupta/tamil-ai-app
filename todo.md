@@ -358,3 +358,10 @@
 
 ## Remove Suggested Question (NEW)
 - [x] Remove "How do I deal with a difficult boss?" from suggested questions on Search page
+
+
+## Bug Fix - LLM Response Language (NEW)
+- [x] LLM is generating too much Tamil text in responses
+- [x] Responses should be primarily in English
+- [x] Tamil should only be used for the actual Thirukkural verses
+- [x] Update LLM system prompt to enforce English output

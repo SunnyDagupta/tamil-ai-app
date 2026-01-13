@@ -349,3 +349,8 @@
 - [x] Add attribution page crediting Project Madurai
 - [x] Update database with complete dataset
 - [x] Verify all couplets are accurate and complete
+
+
+## Auto-scroll to LLM Response (NEW)
+- [x] Add auto-scroll functionality when user presses Enter on LLM guidance
+- [x] Scroll to show the generated answer immediately after submission

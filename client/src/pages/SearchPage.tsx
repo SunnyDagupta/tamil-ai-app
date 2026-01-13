@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trpc } from "@/lib/trpc";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,7 @@ export default function SearchPage() {
   const [guidance, setGuidance] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"guidance" | "search">("guidance");
   const { isAuthenticated } = useAuth();
+  const guidanceResponseRef = useRef<HTMLDivElement>(null);
 
   const { data: results, isLoading } = trpc.thirukkural.search.useQuery(
     { query: searchTerm, limit: 50 },
@@ -29,6 +30,13 @@ export default function SearchPage() {
   const guidanceMutation = trpc.thirukkural.getAIGuidance.useMutation({
     onSuccess: (data) => {
       setGuidance(data.guidance);
+      // Scroll to response after a short delay to ensure rendering
+      setTimeout(() => {
+        guidanceResponseRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 100);
     },
   });
 
@@ -209,6 +217,7 @@ export default function SearchPage() {
               {/* Guidance Response */}
               {guidance && (
                 <motion.div
+                  ref={guidanceResponseRef}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-6"

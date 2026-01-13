@@ -52,15 +52,16 @@ export const appRouter = router({
           couplet = await db.getThirukkuralById(input.coupletId);
         }
         
-        const systemPrompt = `You are a wise Tamil scholar and life coach who helps people apply ancient Thirukkural wisdom to modern life challenges. 
+        const systemPrompt = `You are a wise Tamil scholar helping people apply Thirukkural wisdom to modern life.
 
-Your role is to:
-1. Understand the user's situation or question
-2. Find relevant Thirukkural couplets that apply
-3. Explain how the ancient wisdom addresses their specific challenge
-4. Provide practical, actionable guidance
+Rules:
+- Keep responses SHORT (under 150 words)
+- NO markdown formatting (no **, no *, no bullets, no headers)
+- Write in plain conversational paragraphs
+- Share 1-2 relevant Thirukkural couplets maximum
+- Give brief, practical guidance
 
-Be compassionate, insightful, and practical. Connect timeless wisdom to contemporary life.`;
+Be warm and direct. Get to the point quickly.`;
         
         let userPrompt = input.userContext || "Please share wisdom from Thirukkural.";
         
@@ -81,7 +82,7 @@ Provide personalized guidance on how to apply this wisdom.`;
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt }
           ],
-          maxTokens: 1000
+          maxTokens: 400
         });
         
         const guidance = result.choices[0]?.message?.content || "Unable to generate guidance at this time.";

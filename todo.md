@@ -280,3 +280,9 @@
 - [x] Make feature prominently accessible from Search/Thirukkural pages
 - [x] Add "Ask for Wisdom" button or section
 - [x] Test LLM guidance feature
+
+
+## LLM Response Format Improvement (NEW)
+- [x] Make LLM responses 50% shorter
+- [x] Remove markdown formatting (no ** or * bullets)
+- [x] Keep responses conversational and clean

@@ -13,7 +13,6 @@ import {
   Search,
   MessageCircle
 } from "lucide-react";
-import AskForWisdom from "@/components/AskForWisdom";
 
 export default function HomeApp() {
   const pathways = [
@@ -103,11 +102,6 @@ export default function HomeApp() {
         </p>
       </div>
 
-      {/* Ask for Wisdom - Primary Feature */}
-      <div className="px-6 py-2">
-        <AskForWisdom />
-      </div>
-
       {/* Quick Actions - Prominent CTAs */}
       <div className="px-6 py-4">
         <div className="grid grid-cols-2 gap-3">
@@ -129,11 +123,11 @@ export default function HomeApp() {
             <Card className="cursor-pointer hover:shadow-lg transition-all hover:scale-[1.02] border-purple-200 dark:border-purple-900">
               <CardContent className="p-4 text-center">
                 <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-md shadow-purple-500/20">
-                  <Search className="w-7 h-7 text-white" />
+                  <BookOpen className="w-7 h-7 text-white" />
                 </div>
-                <p className="font-semibold text-gray-900 dark:text-white">Search Wisdom</p>
+                <p className="font-semibold text-gray-900 dark:text-white">Thirukkural</p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Explore Thirukkural
+                  Get life guidance
                 </p>
               </CardContent>
             </Card>

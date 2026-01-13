@@ -286,3 +286,24 @@
 - [x] Make LLM responses 50% shorter
 - [x] Remove markdown formatting (no ** or * bullets)
 - [x] Keep responses conversational and clean
+
+
+## Thirukkural Life Guidance UX Improvement (NEW)
+- [x] Remove Ask for Wisdom from Home page
+- [x] Integrate life guidance into Search/Thirukkural page
+- [x] Rename feature to clearly indicate Thirukkural wisdom for life guidance
+- [x] Make the feature intuitive and prominent on Search page
+
+
+## Lesson Content UX Redesign (NEW)
+- [x] Create swipeable card component for lesson content
+- [x] Break long content into digestible cards
+- [x] Add progress indicator showing current card position
+- [x] Add swipe/tap navigation between cards
+- [x] Update lesson pages to use new card format
+
+
+## Voice and Formatting Fixes (NEW)
+- [x] Fix voice/TTS to use Tamil-suitable voice
+- [x] Remove all ** markdown formatting from lesson content
+- [x] Ensure no markdown formatting appears in any user-facing text

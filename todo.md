@@ -333,3 +333,9 @@
 - [x] Add share button to wisdom response card
 - [x] Support sharing to Twitter, Facebook, WhatsApp
 - [x] Format shared text with wisdom excerpt and app link
+
+
+## Bug Fix - Search Couplets Relevance (NEW)
+- [x] Search couplets feature doesn't return relevant results matching the query
+- [x] Need to improve search algorithm for better matching
+- [x] Consider searching across Tamil text, English translation, and explanation fields

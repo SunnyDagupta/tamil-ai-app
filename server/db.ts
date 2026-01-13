@@ -99,20 +99,75 @@ export async function searchThirukkural(query: string, limit = 20) {
   const db = await getDb();
   if (!db) return [];
 
-  const searchPattern = `%${query}%`;
-  return await db
+  // Expand query with common synonyms and related terms
+  const queryTerms = [query.toLowerCase()];
+  const synonymMap: Record<string, string[]> = {
+    'war': ['battle', 'warfare', 'army', 'fort', 'siege', 'soldier', 'enemy', 'combat', 'fight'],
+    'love': ['affection', 'desire', 'passion', 'devotion', 'attachment'],
+    'wealth': ['riches', 'prosperity', 'fortune', 'money', 'treasure'],
+    'wisdom': ['knowledge', 'learning', 'understanding', 'insight', 'intelligence'],
+    'friend': ['friendship', 'companion', 'ally'],
+    'virtue': ['goodness', 'righteousness', 'morality', 'integrity'],
+    'king': ['ruler', 'monarch', 'sovereign', 'leader', 'governance'],
+    'patience': ['endurance', 'perseverance', 'forbearance', 'tolerance'],
+  };
+
+  // Add synonyms if query matches
+  for (const [key, synonyms] of Object.entries(synonymMap)) {
+    if (query.toLowerCase().includes(key) || synonyms.some(s => query.toLowerCase().includes(s))) {
+      queryTerms.push(key, ...synonyms);
+    }
+  }
+
+  // Remove duplicates
+  const uniqueTerms = Array.from(new Set(queryTerms));
+
+  // Build OR conditions for all terms
+  const conditions = uniqueTerms.flatMap(term => {
+    const pattern = `%${term}%`;
+    return [
+      like(thirukkural.englishTranslation, pattern),
+      like(thirukkural.explanation, pattern),
+      like(thirukkural.chapterName, pattern),
+      like(thirukkural.transliteration, pattern),
+    ];
+  });
+
+  const results = await db
     .select()
     .from(thirukkural)
-    .where(
-      or(
-        like(thirukkural.originalTamil, searchPattern),
-        like(thirukkural.englishTranslation, searchPattern),
-        like(thirukkural.transliteration, searchPattern),
-        like(thirukkural.explanation, searchPattern),
-        like(thirukkural.chapterName, searchPattern)
-      )
-    )
-    .limit(limit);
+    .where(or(...conditions))
+    .limit(limit * 2); // Get more results for ranking
+
+  // Rank results by relevance (how many terms match)
+  const ranked = results.map(result => {
+    let score = 0;
+    const searchableText = [
+      result.englishTranslation,
+      result.explanation,
+      result.chapterName,
+      result.transliteration
+    ].join(' ').toLowerCase();
+
+    uniqueTerms.forEach(term => {
+      const termLower = term.toLowerCase();
+      // Count occurrences
+      const matches = (searchableText.match(new RegExp(termLower, 'g')) || []).length;
+      score += matches;
+      // Bonus for exact query match
+      if (term === query.toLowerCase()) {
+        score += matches * 2;
+      }
+    });
+
+    return { ...result, _score: score };
+  });
+
+  // Sort by score and return top results
+  return ranked
+    .sort((a, b) => b._score - a._score)
+    .slice(0, limit)
+    .map(({ _score, ...result }) => result);
 }
 
 export async function getThirukkuralById(id: number) {

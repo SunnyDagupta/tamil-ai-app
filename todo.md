@@ -307,3 +307,8 @@
 - [x] Fix voice/TTS to use Tamil-suitable voice
 - [x] Remove all ** markdown formatting from lesson content
 - [x] Ensure no markdown formatting appears in any user-facing text
+
+
+## Bug Fix - LLM Guidance Feature Missing (NEW)
+- [x] SearchPage.tsx is missing the LLM guidance feature
+- [x] Need to replace SearchPage.tsx with Search.tsx content that has the full feature

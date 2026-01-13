@@ -312,3 +312,18 @@
 ## Bug Fix - LLM Guidance Feature Missing (NEW)
 - [x] SearchPage.tsx is missing the LLM guidance feature
 - [x] Need to replace SearchPage.tsx with Search.tsx content that has the full feature
+
+
+## LLM Guidance UX Improvements (NEW)
+- [ ] Add Enter key support to submit questions in textarea
+- [ ] Move "Get Thirukkural Guidance" button directly below textarea
+- [ ] Update LLM prompt to focus more on Thirukkural couplets
+- [ ] Increase response length to 200-250 words (from 150)
+
+
+## LLM Guidance UX Improvements (NEW)
+- [x] Add Enter key support to submit questions in textarea (Shift+Enter for new line)
+- [x] Move "Get Thirukkural Guidance" button directly below textarea
+- [x] Update LLM prompt to focus more on Thirukkural couplets
+- [x] Increase response length to 200-250 words (from 150)
+- [x] Ensure mobile-friendly layout and button placement

@@ -150,26 +150,16 @@ export default function SearchPage() {
                   <textarea
                     value={lifeQuestion}
                     onChange={(e) => setLifeQuestion(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleGetGuidance();
+                      }
+                    }}
                     placeholder="Example: I'm facing a tough decision at work about whether to speak up against unfair treatment..."
                     className="w-full p-4 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     rows={3}
                   />
-
-                  {/* Suggested Questions */}
-                  <div>
-                    <p className="text-xs text-muted-foreground mb-2">Try asking about:</p>
-                    <div className="flex flex-wrap gap-2">
-                      {suggestedQuestions.map((q, i) => (
-                        <button
-                          key={i}
-                          onClick={() => setLifeQuestion(q)}
-                          className="text-xs bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1.5 rounded-full transition-colors"
-                        >
-                          {q}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
 
                   <Button
                     onClick={handleGetGuidance}
@@ -188,6 +178,22 @@ export default function SearchPage() {
                       </>
                     )}
                   </Button>
+
+                  {/* Suggested Questions */}
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-2">Try asking about:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {suggestedQuestions.map((q, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setLifeQuestion(q)}
+                          className="text-xs bg-purple-50 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1.5 rounded-full transition-colors"
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
 

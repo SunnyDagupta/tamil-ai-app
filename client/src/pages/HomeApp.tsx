@@ -83,21 +83,6 @@ export default function HomeApp() {
           </p>
         </div>
 
-        <Card className="mt-6">
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Welcome,</p>
-                <p className="font-semibold">Seeker of Wisdom</p>
-              </div>
-              <Link href="/profile">
-                <Button variant="outline" size="sm">
-                  View Profile
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
       </div>
 
       {/* Quick Actions */}

@@ -390,3 +390,15 @@
 - [ ] Test all features on Google Cloud infrastructure
 - [ ] Configure custom domain (payradeepu.ai)
 - [ ] Monitor performance and costs
+
+
+## Google Cloud Migration (NEW)
+- [x] Integrate Google Gemini 2.5 Flash API for LLM
+- [x] Create Cloud SQL instance in Google Cloud
+- [x] Migrate database schema to Cloud SQL (18 tables)
+- [x] Migrate all data to Cloud SQL (1,330 Thirukkural, categories, tiers, achievements, pathways)
+- [x] Create Dockerfile for Cloud Run deployment
+- [x] Create Cloud Run deployment script and documentation
+- [ ] Deploy to Google Cloud Run
+- [ ] Connect custom domain (payradeepu.ai)
+- [ ] Restrict Cloud SQL network access (remove 0.0.0.0/0)

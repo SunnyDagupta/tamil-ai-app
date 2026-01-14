@@ -6,11 +6,12 @@ set -e
 
 echo "🚀 Deploying Tamil AI to Google Cloud Run..."
 
-# Configuration
-PROJECT_ID="your-project-id"  # Replace with your GCP project ID
-REGION="asia-south1"  # Closest to India
+# Configuration - UPDATED WITH ACTUAL PROJECT DETAILS
+PROJECT_ID="gen-lang-client-0703034928"
+REGION="us-central1"  # Same region as Cloud SQL
 SERVICE_NAME="tamil-ai"
 IMAGE_NAME="gcr.io/${PROJECT_ID}/${SERVICE_NAME}"
+CLOUD_SQL_INSTANCE="${PROJECT_ID}:${REGION}:free-trial-first-project"
 
 # Check if gcloud is installed
 if ! command -v gcloud &> /dev/null; then
@@ -19,10 +20,6 @@ if ! command -v gcloud &> /dev/null; then
     exit 1
 fi
 
-# Authenticate with Google Cloud
-echo "🔐 Authenticating with Google Cloud..."
-gcloud auth login
-
 # Set project
 echo "📦 Setting project to ${PROJECT_ID}..."
 gcloud config set project ${PROJECT_ID}
@@ -30,18 +27,14 @@ gcloud config set project ${PROJECT_ID}
 # Enable required APIs
 echo "⚙️  Enabling required Google Cloud APIs..."
 gcloud services enable run.googleapis.com
-gcloud services enable sql-component.googleapis.com
-gcloud services enable sqladmin.googleapis.com
-gcloud services enable storage-api.googleapis.com
+gcloud services enable containerregistry.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
 
-# Build and push Docker image
-echo "🐳 Building Docker image..."
-docker build -t ${IMAGE_NAME}:latest .
+# Build using Cloud Build (no local Docker needed)
+echo "🐳 Building Docker image with Cloud Build..."
+gcloud builds submit --tag ${IMAGE_NAME}:latest .
 
-echo "📤 Pushing image to Google Container Registry..."
-docker push ${IMAGE_NAME}:latest
-
-# Deploy to Cloud Run
+# Deploy to Cloud Run with Cloud SQL connection
 echo "☁️  Deploying to Cloud Run..."
 gcloud run deploy ${SERVICE_NAME} \
   --image ${IMAGE_NAME}:latest \
@@ -54,7 +47,8 @@ gcloud run deploy ${SERVICE_NAME} \
   --min-instances 0 \
   --max-instances 100 \
   --set-env-vars="NODE_ENV=production" \
-  --add-cloudsql-instances="${PROJECT_ID}:${REGION}:tamil-ai-db"
+  --add-cloudsql-instances="${CLOUD_SQL_INSTANCE}" \
+  --set-env-vars="DATABASE_URL=mysql://root:\${CLOUD_SQL_ROOT_PASSWORD}@localhost/tamilai?socket=/cloudsql/${CLOUD_SQL_INSTANCE}"
 
 echo "✅ Deployment complete!"
 echo "🌐 Your app is live at:"

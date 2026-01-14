@@ -365,3 +365,15 @@
 - [x] Responses should be primarily in English
 - [x] Tamil should only be used for the actual Thirukkural verses
 - [x] Update LLM system prompt to enforce English output
+
+
+## Scalability Optimizations for Launch (NEW - URGENT)
+- [x] Add database indexes for all search and foreign key columns
+- [x] Implement in-memory caching for Thirukkural data (1,330 couplets)
+- [x] Add rate limiting for LLM requests (max 10 per user per minute)
+- [x] Implement queue system for LLM calls (max 20 concurrent)
+- [x] Add gzip compression for all responses
+- [x] Update Thirukkural search to use cache instead of database
+- [x] Add user-friendly messages for rate limiting and high traffic
+- [ ] Load test with 1,000+ concurrent users
+- [ ] Monitor performance metrics during launch

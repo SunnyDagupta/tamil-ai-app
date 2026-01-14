@@ -44,8 +44,12 @@ export const appRouter = router({
         coupletId: z.number().optional(),
         userContext: z.string().optional() 
       }))
-      .mutation(async ({ input }) => {
+      .mutation(async ({ input, ctx }) => {
         const { invokeLLM } = await import("./_core/llm");
+        const { queueLLMRequest, getQueueStats } = await import("./rateLimiter");
+        
+        // Get user ID for rate limiting (use IP if not logged in)
+        const userId = ctx.user?.id || ctx.req.ip || 'anonymous';
         
         let couplet = null;
         if (input.coupletId) {
@@ -81,12 +85,15 @@ User's situation: ${input.userContext || "How can I apply this wisdom to my life
 Provide personalized guidance on how to apply this wisdom.`;
         }
         
-        const result = await invokeLLM({
-          messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: userPrompt }
-          ],
-          maxTokens: 600
+        // Queue the LLM request with rate limiting
+        const result = await queueLLMRequest(userId, async () => {
+          return await invokeLLM({
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userPrompt }
+            ],
+            maxTokens: 600
+          });
         });
         
         const guidance = result.choices[0]?.message?.content || "Unable to generate guidance at this time.";

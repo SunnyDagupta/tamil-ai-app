@@ -96,6 +96,14 @@ export async function getUserByOpenId(openId: string) {
 
 // Thirukkural functions
 export async function searchThirukkural(query: string, limit = 20) {
+  // Use cache for better performance
+  const { searchCachedThirukkural } = await import("./cache");
+  const cachedResults = searchCachedThirukkural(query, limit);
+  if (cachedResults.length > 0) {
+    return cachedResults;
+  }
+  
+  // Fallback to database if cache not initialized
   const db = await getDb();
   if (!db) return [];
 
@@ -171,6 +179,14 @@ export async function searchThirukkural(query: string, limit = 20) {
 }
 
 export async function getThirukkuralById(id: number) {
+  // Use cache for better performance
+  const { getCachedThirukkuralById } = await import("./cache");
+  const cached = getCachedThirukkuralById(id);
+  if (cached) {
+    return cached;
+  }
+  
+  // Fallback to database
   const db = await getDb();
   if (!db) return null;
 
@@ -179,6 +195,14 @@ export async function getThirukkuralById(id: number) {
 }
 
 export async function getThirukkuralByChapter(chapterNumber: number) {
+  // Use cache for better performance
+  const { getCachedThirukkuralByChapter } = await import("./cache");
+  const cached = getCachedThirukkuralByChapter(chapterNumber);
+  if (cached.length > 0) {
+    return cached;
+  }
+  
+  // Fallback to database
   const db = await getDb();
   if (!db) return [];
 

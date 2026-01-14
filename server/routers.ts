@@ -45,7 +45,7 @@ export const appRouter = router({
         userContext: z.string().optional() 
       }))
       .mutation(async ({ input, ctx }) => {
-        const { invokeLLM } = await import("./_core/llm");
+        const { generateThirukkuralGuidance } = await import("./gemini");
         const { queueLLMRequest, getQueueStats } = await import("./rateLimiter");
         
         // Get user ID for rate limiting (use IP if not logged in)
@@ -56,20 +56,7 @@ export const appRouter = router({
           couplet = await db.getThirukkuralById(input.coupletId);
         }
         
-        const systemPrompt = `You are a wise Tamil scholar helping people apply Thirukkural wisdom to modern life.
-
-Rules:
-- Keep responses moderate length (200-250 words)
-- NO markdown formatting (no **, no *, no bullets, no headers)
-- Write in plain conversational paragraphs in ENGLISH
-- ALWAYS cite 2-3 specific Thirukkural couplets with their numbers (Kural XXX)
-- Focus heavily on Thirukkural teachings - make the couplets central to your guidance
-- Provide practical application of each couplet to the user's situation
-- Include both Tamil text and English translation for each couplet you reference
-- IMPORTANT: Write ALL explanatory text in English. Only use Tamil for the actual Thirukkural verses themselves.
-- Format: "Kural XXX: [Tamil verse] (English translation) - [English explanation]"
-
-Be warm, wise, and deeply rooted in Thirukkural philosophy.`;
+        // System prompt is now built into generateThirukkuralGuidance
         
         let userPrompt = input.userContext || "Please share wisdom from Thirukkural.";
         
@@ -86,17 +73,9 @@ Provide personalized guidance on how to apply this wisdom.`;
         }
         
         // Queue the LLM request with rate limiting
-        const result = await queueLLMRequest(userId, async () => {
-          return await invokeLLM({
-            messages: [
-              { role: "system", content: systemPrompt },
-              { role: "user", content: userPrompt }
-            ],
-            maxTokens: 600
-          });
+        const guidance = await queueLLMRequest(userId, async () => {
+          return await generateThirukkuralGuidance(userPrompt);
         });
-        
-        const guidance = result.choices[0]?.message?.content || "Unable to generate guidance at this time.";
         
         return {
           guidance: typeof guidance === "string" ? guidance : JSON.stringify(guidance),

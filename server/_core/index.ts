@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
-import compression from "compression";
+// import compression from "compression"; // Removed temporarily
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
@@ -34,7 +34,7 @@ async function startServer() {
   const server = createServer(app);
   
   // Enable gzip compression for all responses (reduces bandwidth by 70%)
-  app.use(compression());
+  // app.use(compression()); // Removed temporarily - will add back after testing Gemini
   
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));

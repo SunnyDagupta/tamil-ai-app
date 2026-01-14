@@ -377,3 +377,16 @@
 - [x] Add user-friendly messages for rate limiting and high traffic
 - [ ] Load test with 1,000+ concurrent users
 - [ ] Monitor performance metrics during launch
+
+
+## Google Cloud Migration (NEW - For Scalability)
+- [x] Integrate Google Gemini 2.5 Flash API for LLM
+- [ ] Set up Google Cloud SQL MySQL database
+- [ ] Migrate database schema and data to Cloud SQL
+- [ ] Update app configuration for Cloud SQL connection
+- [ ] Prepare Dockerfile for Cloud Run deployment
+- [ ] Deploy to Google Cloud Run with auto-scaling
+- [ ] Set up Google Cloud Storage for meditation audio files
+- [ ] Test all features on Google Cloud infrastructure
+- [ ] Configure custom domain (payradeepu.ai)
+- [ ] Monitor performance and costs

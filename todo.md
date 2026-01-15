@@ -402,3 +402,19 @@
 - [ ] Deploy to Google Cloud Run
 - [ ] Connect custom domain (payradeepu.ai)
 - [ ] Restrict Cloud SQL network access (remove 0.0.0.0/0)
+
+
+## Complete Google Cloud Deployment (NEW)
+- [ ] Set up Google Cloud Storage bucket
+- [ ] Update app to use Google Cloud Storage instead of Manus S3
+- [ ] Deploy application to Google Cloud Run
+- [ ] Verify Cloud Run deployment is working
+- [ ] Provide custom domain (payradeepu.ai) setup instructions
+
+
+## Complete 100% Google Cloud Migration (URGENT)
+- [x] Replace storage.ts with Google Cloud Storage SDK
+- [x] Update DATABASE_URL to use Cloud SQL connection (configured in deploy script)
+- [x] Update Dockerfile for Cloud Run with GCS credentials
+- [x] Test all features work with Google Cloud services (health endpoint working, TypeScript OK)
+- [x] Save final checkpoint for deployment

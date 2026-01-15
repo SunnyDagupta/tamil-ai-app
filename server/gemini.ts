@@ -54,7 +54,7 @@ export async function generateWithGemini(request: GeminiRequest): Promise<Gemini
     contents,
     generationConfig: {
       temperature,
-      maxOutputTokens: request.maxTokens || 800,
+      maxOutputTokens: request.maxTokens || 2048,
     }
   };
 
@@ -120,7 +120,7 @@ Format:
     prompt: question,
     systemPrompt,
     temperature: 0.8,
-    maxTokens: 800
+    maxTokens: 2048
   });
 
   return response.text;

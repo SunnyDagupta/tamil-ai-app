@@ -38,7 +38,6 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/drizzle ./drizzle
-COPY --from=builder /app/client/dist ./client/dist
 
 # Create non-root user for security
 RUN addgroup --system --gid 1001 nodejs
@@ -54,4 +53,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8080/api/health || exit 1
 
 # Start the server
-CMD ["node", "dist/server/_core/index.js"]
+CMD ["node", "dist/index.js"]

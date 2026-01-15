@@ -418,3 +418,9 @@
 - [x] Update Dockerfile for Cloud Run with GCS credentials
 - [x] Test all features work with Google Cloud services (health endpoint working, TypeScript OK)
 - [x] Save final checkpoint for deployment
+- [x] Create GCS bucket (tamil-ai-storage)
+- [x] Grant service account permissions (Cloud Run Admin, Cloud Build Editor, Storage Admin)
+- [x] Enable required APIs (Cloud Run, Cloud Build, Container Registry)
+- [x] Fix Dockerfile (patches folder, CMD path, remove client/dist)
+- [ ] User deploying from local machine with gcloud CLI
+- [ ] Verify Cloud Run deployment

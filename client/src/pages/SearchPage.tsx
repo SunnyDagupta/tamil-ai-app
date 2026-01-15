@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { SignupModal, useSignupTrigger } from "@/components/SignupModal";
 import { motion, AnimatePresence } from "framer-motion";
 import { trpc } from "@/lib/trpc";
 import { Input } from "@/components/ui/input";
@@ -27,9 +28,13 @@ export default function SearchPage() {
     enabled: isAuthenticated,
   });
 
+  const { showModal, checkAndTrigger, closeModal } = useSignupTrigger();
+
   const guidanceMutation = trpc.thirukkural.getAIGuidance.useMutation({
     onSuccess: (data) => {
       setGuidance(data.guidance);
+      // Trigger signup modal after successful AI guidance
+      checkAndTrigger();
       // Scroll to response after a short delay to ensure rendering
       setTimeout(() => {
         guidanceResponseRef.current?.scrollIntoView({ 
@@ -390,6 +395,9 @@ export default function SearchPage() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Signup Modal */}
+      {showModal && <SignupModal onClose={closeModal} />}
     </div>
   );
 }

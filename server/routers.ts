@@ -212,6 +212,18 @@ Provide personalized guidance on how to apply this wisdom.`;
       }),
   }),
 
+  // Email Signups (Lead Capture)
+  signup: router({
+    submit: publicProcedure
+      .input(z.object({ 
+        name: z.string().min(1), 
+        email: z.string().email() 
+      }))
+      .mutation(async ({ input }) => {
+        return await db.createEmailSignup(input.name, input.email);
+      }),
+  }),
+
   // Subscriptions
   subscription: router({
     current: protectedProcedure.query(async ({ ctx }) => {

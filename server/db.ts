@@ -4,7 +4,7 @@ import {
   InsertUser, users, thirukkural, meditations, meditationSessions, 
   bookmarks, learningPathways, userPathwayProgress, userStreaks,
   achievements, userAchievements, communityPosts, userSubscriptions,
-  meditationCategories, subscriptionTiers
+  meditationCategories, subscriptionTiers, emailSignups
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -590,5 +590,39 @@ export async function isLessonComplete(userId: number, moduleName: string, lesso
   } catch (error) {
     console.error("[Database] Error checking lesson completion:", error);
     return { completed: false };
+  }
+}
+
+
+// Email Signup for lead capture
+export async function createEmailSignup(name: string, email: string) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot create email signup: database not available");
+    return { success: false, error: "Database not available" };
+  }
+
+  try {
+    // Check if email already exists
+    const existing = await db.execute(sql`
+      SELECT id FROM email_signups WHERE email = ${email} LIMIT 1
+    `);
+    
+    const rows = (existing[0] as any) as Array<{ id: number }>;
+    if (rows.length > 0) {
+      return { success: true, message: "Already signed up" };
+    }
+
+    // Insert new signup
+    await db.insert(emailSignups).values({
+      name,
+      email,
+      source: "app"
+    });
+
+    return { success: true, message: "Signed up successfully" };
+  } catch (error) {
+    console.error("[Database] Error creating email signup:", error);
+    return { success: false, error: "Failed to save signup" };
   }
 }

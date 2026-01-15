@@ -257,3 +257,15 @@ export type UserAchievement = typeof userAchievements.$inferSelect;
 export type CommunityPost = typeof communityPosts.$inferSelect;
 export type CommunityComment = typeof communityComments.$inferSelect;
 export type PostLike = typeof postLikes.$inferSelect;
+
+// Email signups for lead capture
+export const emailSignups = mysqlTable("email_signups", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  source: varchar("source", { length: 100 }).default("app"), // 'app', 'landing', etc.
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type EmailSignup = typeof emailSignups.$inferSelect;
+export type InsertEmailSignup = typeof emailSignups.$inferInsert;

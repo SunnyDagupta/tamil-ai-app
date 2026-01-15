@@ -1,9 +1,16 @@
 export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 
 // Generate login URL at runtime so redirect URI reflects the current origin.
+// Returns null if OAuth is not configured (e.g., in standalone Google Cloud deployment)
 export const getLoginUrl = () => {
   const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL;
   const appId = import.meta.env.VITE_APP_ID;
+  
+  // If OAuth is not configured, return null (app runs in standalone mode)
+  if (!oauthPortalUrl || !appId) {
+    return null;
+  }
+  
   const redirectUri = `${window.location.origin}/api/oauth/callback`;
   const state = btoa(redirectUri);
 

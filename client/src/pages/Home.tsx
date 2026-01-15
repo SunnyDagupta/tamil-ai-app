@@ -13,6 +13,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { Link } from "wouter";
+import { EmailBanner } from "@/components/EmailBanner";
 // Auth removed for public access
 
 export default function Home() {
@@ -350,6 +351,9 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* Email Signup Banner */}
+      <EmailBanner />
 
       {/* Footer */}
       <footer className="py-8 px-4 border-t">

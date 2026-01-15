@@ -595,7 +595,7 @@ export async function isLessonComplete(userId: number, moduleName: string, lesso
 
 
 // Email Signup for lead capture
-export async function createEmailSignup(name: string, email: string) {
+export async function createEmailSignup(name: string, email: string, source: string = "app") {
   const db = await getDb();
   if (!db) {
     console.warn("[Database] Cannot create email signup: database not available");
@@ -617,7 +617,7 @@ export async function createEmailSignup(name: string, email: string) {
     await db.insert(emailSignups).values({
       name,
       email,
-      source: "app"
+      source
     });
 
     return { success: true, message: "Signed up successfully" };

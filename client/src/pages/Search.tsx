@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search as SearchIcon, Bookmark, BookmarkCheck, Loader2, MessageCircle, Sparkles } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
+import { EmailSubscribeDialog } from "@/components/EmailSubscribeDialog";
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -15,6 +16,7 @@ export default function Search() {
   const [lifeQuestion, setLifeQuestion] = useState("");
   const [guidance, setGuidance] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"guidance" | "search">("guidance");
+  const [showSubscribeDialog, setShowSubscribeDialog] = useState(false);
   const { isAuthenticated } = useAuth();
 
   const { data: results, isLoading } = trpc.thirukkural.search.useQuery(
@@ -220,17 +222,25 @@ export default function Search() {
                       <div className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed">
                         {guidance}
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => {
-                          setGuidance(null);
-                          setLifeQuestion("");
-                        }}
-                        className="mt-4 text-purple-600 hover:text-purple-700"
-                      >
-                        Ask another question
-                      </Button>
+                      <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setGuidance(null);
+                            setLifeQuestion("");
+                          }}
+                          className="text-purple-600 hover:text-purple-700"
+                        >
+                          Ask another question
+                        </Button>
+                        <button
+                          onClick={() => setShowSubscribeDialog(true)}
+                          className="text-sm text-muted-foreground hover:text-primary underline transition-colors"
+                        >
+                          Join our community
+                        </button>
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -353,6 +363,13 @@ export default function Search() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Email Subscribe Dialog */}
+      <EmailSubscribeDialog 
+        open={showSubscribeDialog} 
+        onOpenChange={setShowSubscribeDialog}
+        source="ai_response_link"
+      />
     </div>
   );
 }

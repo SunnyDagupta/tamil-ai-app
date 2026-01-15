@@ -216,11 +216,12 @@ Provide personalized guidance on how to apply this wisdom.`;
   signup: router({
     submit: publicProcedure
       .input(z.object({ 
-        name: z.string().min(1), 
-        email: z.string().email() 
+        name: z.string().optional(), 
+        email: z.string().email(),
+        source: z.string().optional()
       }))
       .mutation(async ({ input }) => {
-        return await db.createEmailSignup(input.name, input.email);
+        return await db.createEmailSignup(input.name || "", input.email, input.source || "app");
       }),
   }),
 
